@@ -2,26 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+    --color-primary-100: 250, 67%, 90%;
+    --color-primary-500: 250, 67%, 50%;
+    --color-primary-900: 250, 67%, 10%;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    --color-text-base: 250, 67%, 98%;
+    --color-text-muted: 250, 67%, 90%;
+    --color-text-inverted: 250, 67%, 10%;
+
+    --border-radius: 0.25rem;
+  }
+  .theme-neon {
+    --color-primary-100: 110, 80%, 90%;
+    --color-primary-500: 110, 80%, 50%;
+    --color-primary-900: 110, 80%, 10%;
+
+    --color-text-base: 110, 80%, 98%;
+    --color-text-muted: 110, 80%, 90%;
+    --color-text-inverted: 110, 80%, 10%;
+  }
 }
