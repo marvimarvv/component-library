@@ -24,7 +24,7 @@ export const Button = ({
     <button
       type="button"
       className={[
-        "pointer-cursor bg-gradient-to-br from-skin-primary-100 to-skin-primary-500 rounded-full font-bold visited:no-underline outline-none focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-skin-primary active:scale-[90%] transition-transform duration-75 ease hover:scale-105",
+        "pointer-cursor bg-gradient-to-br from-skin-primary-100 to-skin-primary-500 rounded-skin font-bold visited:no-underline outline-none focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-skin-primary active:scale-[90%] transition-transform duration-75 ease hover:scale-105",
         size === "small" ? "px-space-2xs py-space-3xs text-fluid-xs" : "",
         size === "medium" ? "px-space-xs py-space-3xs text-fluid-s" : "",
         size === "large" ? "px-space-s py-space-2xs text-fluid-m" : "",
@@ -37,3 +37,5 @@ export const Button = ({
     </button>
   );
 };
+
+export default Button;
