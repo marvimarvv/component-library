@@ -11,7 +11,7 @@ interface ButtonProps {
 }
 
 const buttonStyles = cva(
-  "pointer-cursor bg-gradient-to-br from-skin-primary-100 to-skin-primary-500 rounded-skin font-bold visited:no-underline outline-none focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-skin-primary active:scale-[90%] transition-transform duration-75 ease hover:scale-105",
+  "pointer-cursor rounded-skin font-bold visited:no-underline focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-skin-primary-500 focus-visible:outline-offset-2",
   {
     variants: {
       intent: {
@@ -27,38 +27,18 @@ const buttonStyles = cva(
         true: "w-full",
       },
       isGradientTheme: {
-        true: "",
+        true: "gradient-button-hover-effect bg-gradient-to-br from-skin-primary-100 via-skin-primary-500 to-skin-primary-100 active:shadow-skin-primary-100 active:shadow-xl active:transition-shadow",
       },
       isNeonTheme: {
-        true: "",
+        true: "bg-skin-primary-500 neon-button-clip-path",
       },
     },
     compoundVariants: [
       {
-        intent: "primary",
-        size: "small",
-        isGradientTheme: true,
-        class:
-          "bg-gradient-to-br from-skin-primary-100 to-skin-primary-50 px-gradient-primary-button-small py-gradient-primary-button-small",
-      },
-      {
-        intent: "primary",
-        size: "medium",
-        isGradientTheme: true,
-        class:
-          "bg-gradient-to-br from-skin-primary-100 to-skin-primary-50 px-gradient-primary-button-medium py-gradient-primary-button-medium",
-      },
-      {
-        intent: "primary",
-        size: "large",
-        isGradientTheme: true,
-        class:
-          "bg-gradient-to-br from-skin-primary-100 to-skin-primary-50 px-gradient-primary-button-large py-gradient-primary-button-large",
-      },
-      {
         intent: "secondary",
         isGradientTheme: true,
-        class: "bg-none text-skin-primary-500 border-skin-primary-500 border-2",
+        class:
+          "relative text-transparent bg-clip-text before:bg-gradient-to-br before:from-skin-primary-100 before:to-skin-primary-500 before:absolute before:inset-0 before:rounded-skin before:-z-20 after:absolute after:inset-1 after:bg-white after:-z-10 after:rounded-skin",
       },
     ],
     defaultVariants: {

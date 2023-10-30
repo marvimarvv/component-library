@@ -39,30 +39,24 @@
   --border-radius: 0;
 }
 
-@layer components {
-  /* Use this padding to stay responsive and have same height as secondary button */
-  .px-gradient-primary-button-small {
-    padding-left: calc(4px + theme(spacing.space-2xs)) !important;
-    padding-right: calc(4px + theme(spacing.space-2xs)) !important;
+@layer utilities {
+  .gradient-button-hover-effect {
+    &,
+    &::before {
+      background-size: 200% 200%;
+      background-position: left center;
+      transition: background-position 0.3s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover,
+      &:hover::before {
+        background-position: right center;
+      }
+    }
   }
-  .px-gradient-primary-button-medium {
-    padding-left: calc(4px + theme(spacing.space-xs)) !important;
-    padding-right: calc(4px + theme(spacing.space-xs)) !important;
-  }
-  .px-gradient-primary-button-large {
-    padding-left: calc(4px + theme(spacing.space-s)) !important;
-    padding-right: calc(4px + theme(spacing.space-s)) !important;
-  }
-  .py-gradient-primary-button-small {
-    padding-top: calc(4px + theme(spacing.space-3xs)) !important;
-    padding-bottom: calc(4px + theme(spacing.space-3xs)) !important;
-  }
-  .py-gradient-primary-button-medium {
-    padding-top: calc(4px + theme(spacing.space-3xs)) !important;
-    padding-bottom: calc(4px + theme(spacing.space-3xs)) !important;
-  }
-  .py-gradient-primary-button-large {
-    padding-top: calc(4px + theme(spacing.space-2xs)) !important;
-    padding-bottom: calc(4px + theme(spacing.space-2xs)) !important;
+
+  .neon-button-clip-path {
+    clip-path: polygon(15% 0%, 100% 0, 100% 100%, 0 100%, 0% 30%);
   }
 }
