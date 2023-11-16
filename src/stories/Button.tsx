@@ -1,7 +1,9 @@
-import React from "react";
+import { useEffect, useState } from "react";
+
 import { cva } from "class-variance-authority";
 
 interface ButtonProps {
+  /** You can also describe what a prop does and it'll show up in Storybook autodocs */
   intent: "primary" | "secondary";
   backgroundColor?: string;
   size?: "small" | "medium" | "large";
@@ -30,7 +32,7 @@ const buttonStyles = cva(
         true: "gradient-button-hover-effect bg-gradient-to-br from-skin-primary-100 via-skin-primary-500 to-skin-primary-100 active:shadow-skin-primary-100 active:shadow-xl active:transition-shadow",
       },
       isNeonTheme: {
-        true: "bg-skin-primary-500 neon-button-clip-path",
+        true: "active-button-shift after:transition-all after:duration-150 active:translate-x-2 bg-skin-primary-500 relative transition-all duration-150 after:absolute after:h-full after:w-[10%] after:right-[-9%] after:bottom-[-10%] after:bg-skin-primary-700 after:skew-y-[45deg] before:absolute before:left-[4%] before:bottom-[-20%] before:w-full before:h-[20%] before:skew-x-[45deg] before:bg-skin-primary-900 before:transition-all before:duration-150 active:translate-y-2",
       },
     },
     compoundVariants: [
@@ -39,6 +41,11 @@ const buttonStyles = cva(
         isGradientTheme: true,
         class:
           "relative text-transparent bg-clip-text before:bg-gradient-to-br before:from-skin-primary-100 before:to-skin-primary-500 before:absolute before:inset-0 before:rounded-skin before:-z-20 after:absolute after:inset-1 after:bg-white after:-z-10 after:rounded-skin",
+      },
+      {
+        intent: "secondary",
+        isNeonTheme: true,
+        class: "",
       },
     ],
     defaultVariants: {
@@ -49,6 +56,7 @@ const buttonStyles = cva(
   }
 );
 
+/**  This is some comment that will show up in the docs */
 export const Button = ({
   intent,
   size,
@@ -56,10 +64,33 @@ export const Button = ({
   label,
   ...props
 }: ButtonProps) => {
-  const isGradientTheme =
-    document.documentElement.classList.contains("gradient-theme");
-  const isNeonTheme = document.documentElement.classList.contains("neon-theme");
+  const [isGradientTheme, setIsGradientTheme] = useState(false);
+  const [isNeonTheme, setIsNeonTheme] = useState(false);
   const fullWidth = props.fullWidth || false;
+
+  /* Use the MutationObserver API to detect changes in the class attribute of the <html> element,
+     otherwise Storybook doesn't render it correctly */
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
+          setIsGradientTheme(
+            document.documentElement.classList.contains("gradient-theme")
+          );
+          setIsNeonTheme(
+            document.documentElement.classList.contains("neon-theme")
+          );
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <button
       type="button"

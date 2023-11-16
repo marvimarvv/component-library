@@ -5,7 +5,9 @@
 @layer base {
   :root {
     --color-primary-100: 250, 67%, 90%;
+    --color-primary-300: 250, 67%, 70%;
     --color-primary-500: 250, 67%, 50%;
+    --color-primary-700: 250, 67%, 30%;
     --color-primary-900: 250, 67%, 10%;
 
     --color-text-base: 250, 67%, 98%;
@@ -18,7 +20,9 @@
 
 .gradient-theme {
   --color-primary-100: 250, 67%, 90%;
+  --color-primary-300: 250, 67%, 70%;
   --color-primary-500: 250, 67%, 50%;
+  --color-primary-700: 250, 67%, 30%;
   --color-primary-900: 250, 67%, 10%;
 
   --color-text-base: 250, 67%, 98%;
@@ -29,7 +33,9 @@
 }
 .neon-theme {
   --color-primary-100: 110, 80%, 90%;
+  --color-primary-300: 110, 67%, 70%;
   --color-primary-500: 110, 80%, 50%;
+  --color-primary-700: 110, 67%, 30%;
   --color-primary-900: 110, 80%, 10%;
 
   --color-text-base: 110, 80%, 10%;
@@ -56,7 +62,13 @@
     }
   }
 
-  .neon-button-clip-path {
-    clip-path: polygon(15% 0%, 100% 0, 100% 100%, 0 100%, 0% 30%);
+  .active-button-shift:active::after {
+    transform: rotateY(90deg);
+    transform-origin: left;
+  }
+
+  .active-button-shift:active::before {
+    transform: rotateX(90deg);
+    transform-origin: top;
   }
 }
