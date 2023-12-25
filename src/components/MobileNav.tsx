@@ -1,17 +1,37 @@
 import { Popover, Transition } from "@headlessui/react";
 
 import Link from "next/link";
+import { MutableRefObject } from "react";
 
-export default function MobileMenu({ className, pageContent, links }) {
+interface LinkProps {
+  href: string;
+  label: string;
+}
+
+interface MobileNavProps {
+  className?: string;
+  pageContent?: MutableRefObject<HTMLElement | null>;
+  links: LinkProps[];
+  backgroundColor?: string;
+}
+
+const MobileNav: React.FC<MobileNavProps> = ({
+  className,
+  pageContent,
+  links,
+  backgroundColor,
+}) => {
   const hidePageContent = () => {
-    const isOpen = pageContent.current.style.overflow === "hidden";
+    const isOpen = pageContent?.current?.style.overflow === "hidden";
 
     if (isOpen) {
-      pageContent.current.style.overflow = "auto";
-      pageContent.current.style.height = "unset";
+      pageContent.current!.style.overflow = "auto";
+      pageContent.current!.style.height = "unset";
     } else {
-      pageContent.current.style.overflow = "hidden";
-      pageContent.current.style.height = "100dvh";
+      if (pageContent?.current) {
+        pageContent.current.style.overflow = "hidden";
+        pageContent.current!.style.height = "100vh";
+      }
     }
   };
 
@@ -20,7 +40,7 @@ export default function MobileMenu({ className, pageContent, links }) {
       {({ open }) => (
         <>
           <Popover.Button
-            className="relative z-20 text-fluid-xl focus:outline-none focus-visible:outline"
+            className="relative z-20 text-fluid-xl focus:outline-none focus-visible:outline aspect-square"
             onClick={() => {
               hidePageContent();
             }}
@@ -29,22 +49,22 @@ export default function MobileMenu({ className, pageContent, links }) {
               <div
                 className={
                   open
-                    ? "absolute top-0 h-1 w-8 origin-center -translate-y-1/2 rotate-45 rounded-full bg-white transition duration-500"
-                    : "mb-1.5 h-1 w-8 rounded-full bg-white transition duration-500"
+                    ? `absolute top-0 h-1 w-8 origin-center -translate-y-1/2 rotate-45 rounded-full transition duration-500 ${backgroundColor}-contrast`
+                    : "mb-1.5 h-1 w-8 rounded-full bg-skin-content-on-light dark:bg-skin-content-on-dark transition duration-500"
                 }
               ></div>
               <div
                 className={
                   open
-                    ? "h-1 w-8 rounded-full bg-transparent transition duration-500"
-                    : "mb-1.5 h-1 w-8 rounded-full bg-white transition duration-500"
+                    ? `h-1 w-8 rounded-full transition duration-500 ${backgroundColor}-contrast`
+                    : "mb-1.5 h-1 w-8 rounded-full bg-skin-content-on-light dark:bg-skin-content-on-dark transition duration-500"
                 }
               ></div>
               <div
                 className={
                   open
-                    ? "absolute bottom-0 h-1 w-8 origin-center -translate-y-1/2 -rotate-45 rounded-full bg-white transition duration-500"
-                    : "h-1 w-8 rounded-full bg-white transition duration-500"
+                    ? `absolute bottom-0 h-1 w-8 origin-center -translate-y-1/2 -rotate-45 rounded-full transition duration-500 ${backgroundColor}-contrast`
+                    : "h-1 w-8 rounded-full bg-skin-content-on-light dark:bg-skin-content-on-dark transition duration-500"
                 }
               ></div>
             </div>
@@ -61,7 +81,9 @@ export default function MobileMenu({ className, pageContent, links }) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Popover.Overlay className="fixed inset-0 bg-skin-primary-500" />
+              <Popover.Overlay
+                className={`fixed inset-0 bg-skin-primary-500 ${backgroundColor}`}
+              />
             </Transition.Child>
             <Popover.Panel className="fixed inset-0 grid place-items-center">
               <nav className="flex flex-col items-center justify-center gap-4">
@@ -83,16 +105,6 @@ export default function MobileMenu({ className, pageContent, links }) {
                         {link.label}
                       </Popover.Button>
                     </Transition.Child>
-                    <Transition.Child
-                      enter="transition transform duration-500 ease"
-                      enterFrom="scale-50 opacity-0"
-                      enterTo="scale-100 opacity-100"
-                      leave="transition transform duration-500 ease"
-                      leaveFrom="scale-100 opacity-100"
-                      leaveTo="scale-0 opacity-0"
-                    >
-                      <div className="h-2 w-2 rounded-full bg-skin-primary-900"></div>
-                    </Transition.Child>
                   </span>
                 ))}
               </nav>
@@ -102,4 +114,6 @@ export default function MobileMenu({ className, pageContent, links }) {
       )}
     </Popover>
   );
-}
+};
+
+export default MobileNav;

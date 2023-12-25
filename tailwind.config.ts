@@ -18,6 +18,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/stories/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   future: {
     hoverOnlyWhenSupported: true,
   },
@@ -36,16 +37,68 @@ const config: Config = {
           "primary-100": withOpacity("--color-primary-100")({
             opacityValue: 1,
           }),
+          "primary-100-contrast": withOpacity("--color-primary-100-contrast")({
+            opacityValue: 1,
+          }),
+          "primary-100-contrast-muted": withOpacity(
+            "--color-primary-100-contrast-muted"
+          )({
+            opacityValue: 1,
+          }),
           "primary-300": withOpacity("--color-primary-300")({
+            opacityValue: 1,
+          }),
+          "primary-300-contrast": withOpacity("--color-primary-300-contrast")({
+            opacityValue: 1,
+          }),
+          "primary-300-contrast-muted": withOpacity(
+            "--color-primary-300-contrast-muted"
+          )({
             opacityValue: 1,
           }),
           "primary-500": withOpacity("--color-primary-500")({
             opacityValue: 1,
           }),
+          "primary-500-contrast": withOpacity("--color-primary-500-contrast")({
+            opacityValue: 1,
+          }),
+          "primary-500-contrast-muted": withOpacity(
+            "--color-primary-500-contrast-muted"
+          )({
+            opacityValue: 1,
+          }),
           "primary-700": withOpacity("--color-primary-700")({
             opacityValue: 1,
           }),
+          "primary-700-contrast": withOpacity("--color-primary-700-contrast")({
+            opacityValue: 1,
+          }),
+          "primary-700-contrast-muted": withOpacity(
+            "--color-primary-700-contrast-muted"
+          )({
+            opacityValue: 1,
+          }),
           "primary-900": withOpacity("--color-primary-900")({
+            opacityValue: 1,
+          }),
+          "primary-900-contrast": withOpacity("--color-primary-900-contrast")({
+            opacityValue: 1,
+          }),
+          "primary-900-contrast-muted": withOpacity(
+            "--color-primary-900-contrast-muted"
+          )({
+            opacityValue: 1,
+          }),
+          light: withOpacity("--color-light")({
+            opacityValue: 1,
+          }),
+          "content-on-light": withOpacity("--color-content-on-light")({
+            opacityValue: 1,
+          }),
+          dark: withOpacity("--color-dark")({
+            opacityValue: 1,
+          }),
+          "content-on-dark": withOpacity("--color-content-on-dark")({
             opacityValue: 1,
           }),
         },
@@ -106,13 +159,6 @@ const config: Config = {
         "space-xl-2xl": "clamp(2.625rem, 1.625rem + 5vw, 6rem)",
         /* Space 2xl-3xl: 56px → 144px */
         "space-2xl-3xl": "clamp(3.5rem, 1.8704rem + 8.1481vw, 9rem)",
-      },
-      textColor: {
-        skin: {
-          base: withOpacity("--color-text-base")({ opacityValue: 1 }),
-          muted: withOpacity("--color-text-muted")({ opacityValue: 1 }),
-          inverted: withOpacity("--color-text-inverted")({ opacityValue: 1 }),
-        },
       },
     },
   },

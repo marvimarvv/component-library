@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 import { cva } from "class-variance-authority";
@@ -17,7 +19,7 @@ const buttonStyles = cva(
   {
     variants: {
       intent: {
-        primary: "text-skin-base border-none",
+        primary: "text-skin-primary-500-contrast border-none",
         secondary: "",
       },
       size: {
@@ -29,10 +31,10 @@ const buttonStyles = cva(
         true: "w-full",
       },
       isGradientTheme: {
-        true: "gradient-button-hover-effect bg-gradient-to-br from-skin-primary-100 via-skin-primary-500 to-skin-primary-100 active:shadow-skin-primary-100 active:shadow-xl active:transition-shadow",
+        true: "gradient-button bg-gradient-to-br from-skin-primary-100 via-skin-primary-500 to-skin-primary-100",
       },
       isNeonTheme: {
-        true: "active-button-shift after:transition-all after:duration-150 active:translate-x-2 bg-skin-primary-500 relative transition-all duration-150 after:absolute after:h-full after:w-[10%] after:right-[-9%] after:bottom-[-10%] after:bg-skin-primary-700 after:skew-y-[45deg] before:absolute before:left-[4%] before:bottom-[-20%] before:w-full before:h-[20%] before:skew-x-[45deg] before:bg-skin-primary-900 before:transition-all before:duration-150 active:translate-y-2",
+        true: "-translate-y-[.5em] active:after:w-[.1em] active:after:-right-[.1em] active:after:-bottom-[.1em] active:before:h-[.1em] active:before:-right-[.1em] active:before:-bottom-[.1em] active:translate-y-0 active:translate-x-[.3em] after:transition-all after:duration-150 bg-skin-primary-500 relative transition-all duration-150 after:absolute after:h-full after:w-[0.5em] after:right-[-0.5em] after:bottom-[-0.25em] after:bg-skin-primary-700 after:skew-y-[45deg] before:absolute before:-right-[0.25em] before:-bottom-[0.5em] before:w-full before:h-[0.5em] before:skew-x-[45deg] before:bg-skin-primary-900 dark:before:bg-skin-primary-700 before:transition-all before:duration-150",
       },
     },
     compoundVariants: [
@@ -40,12 +42,13 @@ const buttonStyles = cva(
         intent: "secondary",
         isGradientTheme: true,
         class:
-          "relative text-transparent bg-clip-text before:bg-gradient-to-br before:from-skin-primary-100 before:to-skin-primary-500 before:absolute before:inset-0 before:rounded-skin before:-z-20 after:absolute after:inset-1 after:bg-white after:-z-10 after:rounded-skin",
+          "relative text-transparent bg-clip-text dark:via-skin-primary-300 before:bg-gradient-to-br before:from-skin-primary-100 before:to-skin-primary-500 before:absolute before:inset-0 before:rounded-skin before:-z-20 after:absolute after:inset-1 after:bg-white active:after:bg-gradient-to-br active:after:from-skin-primary-100 active:after:to-skin-primary-500 active:text-white dark:active:text-skin-gray dark:after:bg-skin-gray after:-z-10 after:rounded-skin",
       },
       {
         intent: "secondary",
         isNeonTheme: true,
-        class: "",
+        class:
+          "neon-button-secondary-border bg-white dark:bg-skin-gray dark:text-white -translate-y-[.5em] active:after:w-[.1em] active:after:-right-[.1em] active:after:-bottom-[.1em] active:before:h-[.1em] active:before:-right-[.1em] active:before:-bottom-[.1em] active:translate-y-0 active:translate-x-[.3em] after:transition-all after:duration-150 bg-skin-primary-500 relative transition-all duration-150 after:absolute after:h-full after:w-[0.5em] after:right-[-0.5em] after:bottom-[-0.25em] after:bg-skin-primary-700 after:skew-y-[45deg] before:absolute before:-right-[0.25em] before:-bottom-[0.5em] before:w-full before:h-[0.5em] before:skew-x-[45deg] before:bg-skin-primary-900 before:transition-all before:duration-150",
       },
     ],
     defaultVariants: {
@@ -91,6 +94,7 @@ export const Button = ({
 
     return () => observer.disconnect();
   }, []);
+
   return (
     <button
       type="button"
