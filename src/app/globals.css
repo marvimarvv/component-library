@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    /* Don't use hsl directly to enable opacity in the tailwind config */
+  .gradient-theme {
     --color-primary-100: 250, 67%, 90%;
     --color-primary-100-contrast: 0, 0%, 15%;
     --color-primary-100-contrast-muted: 0, 0%, 46%;
@@ -21,60 +20,44 @@
     --color-primary-900-contrast: 0, 0%, 100%;
     --color-primary-900-contrast-muted: 0, 0%, 60%;
 
-    --color-light: 0, 0%, 100%;
-    --color-content-on-light: 0, 0%, 15%;
-    --color-dark: 0, 0%, 15%;
-    --color-content-on-dark: 0, 0%, 100%;
+    --color-background: 0, 0%, 100%;
+    --color-on-background: 0, 0%, 15%;
+
+    &.dark {
+      --color-background: 0, 0%, 15%;
+      --color-on-background: 0, 0%, 100%;
+    }
 
     --border-radius: 999rem;
   }
-}
 
-.gradient-theme {
-  --color-primary-100: 250, 67%, 90%;
-  --color-primary-100-contrast-muted: 0, 0%, 46%;
-  --color-primary-300: 250, 67%, 70%;
-  --color-primary-300-contrast: 0, 0%, 15%;
-  --color-primary-300-contrast-muted: 0, 0%, 46%;
-  --color-primary-500: 250, 67%, 50%;
-  --color-primary-500-contrast: 0, 0%, 100%;
-  --color-primary-500-contrast-muted: 0, 0%, 60%;
-  --color-primary-700: 250, 67%, 30%;
-  --color-primary-700-contrast: 0, 0%, 100%;
-  --color-primary-700-contrast-muted: 0, 0%, 60%;
-  --color-primary-900: 250, 67%, 10%;
-  --color-primary-900-contrast: 0, 0%, 100%;
-  --color-primary-900-contrast-muted: 0, 0%, 60%;
+  .neon-theme {
+    --color-primary-100: 110, 80%, 90%;
+    --color-primary-100-contrast: 0, 0%, 15%;
+    --color-primary-100-contrast-muted: 0, 0%, 42%;
+    --color-primary-300: 110, 67%, 70%;
+    --color-primary-300-contrast: 0, 0%, 0%;
+    --color-primary-300-contrast-muted: 0, 0%, 42%;
+    --color-primary-500: 110, 80%, 50%;
+    --color-primary-500-contrast: 0, 0%, 0%;
+    --color-primary-500-contrast-muted: 0, 0%, 42%;
+    --color-primary-700: 110, 67%, 30%;
+    --color-primary-700-contrast: 0, 0%, 0%;
+    --color-primary-700-contrast-muted: 0, 0%, 65%;
+    --color-primary-900: 110, 80%, 10%;
+    --color-primary-900-contrast: 0, 0%, 100%;
+    --color-primary-900-contrast-muted: 0, 0%, 65%;
 
-  --color-light: 0, 0%, 100%;
-  --color-content-on-light: 0, 0%, 15%;
-  --color-dark: 0, 0%, 15%;
-  --color-content-on-dark: 0, 0%, 100%;
+    --color-background: 0, 0%, 100%;
+    --color-on-background: 0, 0%, 0%;
 
-  --border-radius: 999rem;
-}
-.neon-theme {
-  --color-primary-100: 110, 80%, 90%;
-  --color-primary-100-contrast-muted: 0, 0%, 42%;
-  --color-primary-300: 110, 67%, 70%;
-  --color-primary-300-contrast: 0, 0%, 0%;
-  --color-primary-300-contrast-muted: 0, 0%, 42%;
-  --color-primary-500: 110, 80%, 50%;
-  --color-primary-500-contrast: 0, 0%, 0%;
-  --color-primary-500-contrast-muted: 0, 0%, 42%;
-  --color-primary-700: 110, 67%, 30%;
-  --color-primary-700-contrast: 0, 0%, 0%;
-  --color-primary-700-contrast-muted: 0, 0%, 65%;
-  --color-primary-900: 110, 80%, 10%;
-  --color-primary-900-contrast: 0, 0%, 100%;
-  --color-primary-900-contrast-muted: 0, 0%, 65%;
+    &.dark {
+      --color-background: 0, 0%, 0%;
+      --color-on-background: 0, 0%, 100%;
+    }
 
-  --color-light: 0, 0%, 100%;
-  --color-content-on-light: 0, 0%, 0%;
-  --color-dark: 0, 0%, 0%;
-  --color-content-on-dark: 0, 0%, 100%;
-
-  --border-radius: 0rem;
+    --border-radius: 0rem;
+  }
 }
 
 @layer utilities {
@@ -82,14 +65,14 @@
     &,
     &::before {
       background-size: 200% 200%;
-      background-position: left center;
+      background-position: left top;
       transition: all 0.3s ease;
     }
 
     @media (hover: hover) and (pointer: fine) {
       &:hover,
       &:hover::before {
-        background-position: right center;
+        background-position: right bottom;
       }
     }
 

@@ -1,10 +1,10 @@
 import "./globals.css";
 
-import { Inter } from "next/font/google";
+import { DotGothic16 } from "next/font/google";
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider } from "../components/ThemeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const dotGothic16 = DotGothic16({ weight: ["400"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,10 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+      <body className={dotGothic16.className}>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

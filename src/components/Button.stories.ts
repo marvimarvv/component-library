@@ -67,4 +67,7 @@ export const FullWidth: Story = {
     label: "Button",
     fullWidth: true,
   },
+  parameters: {
+    layout: "fullscreen",
+  },
 };

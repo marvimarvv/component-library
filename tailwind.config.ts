@@ -89,16 +89,10 @@ const config: Config = {
           )({
             opacityValue: 1,
           }),
-          light: withOpacity("--color-light")({
+          background: withOpacity("--color-background")({
             opacityValue: 1,
           }),
-          "content-on-light": withOpacity("--color-content-on-light")({
-            opacityValue: 1,
-          }),
-          dark: withOpacity("--color-dark")({
-            opacityValue: 1,
-          }),
-          "content-on-dark": withOpacity("--color-content-on-dark")({
+          "on-background": withOpacity("--color-on-background")({
             opacityValue: 1,
           }),
         },
@@ -122,6 +116,15 @@ const config: Config = {
         /* 48.83px → 79.97px */
         "fluid-3xl": "clamp(3.0519rem, 2.4752rem + 2.8833vw, 4.9981rem)",
       },
+      /* Make sure these classes are always available, right now the contrasting ones are used
+      in the mobile nav, but they're not available because they're dynamically generated with JS */
+      safelist: [
+        "bg-skin-primary-100-contrast",
+        "bg-skin-primary-300-contrast",
+        "bg-skin-primary-500-contrast",
+        "bg-skin-primary-700-contrast",
+        "bg-skin-primary-900-contrast",
+      ],
       /* @link https://utopia.fyi/space/calculator?c=320,14,1.25,1400,24,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,&g=s,l,xl,12 */
       spacing: {
         /* Space 3xs: 4px → 6px */

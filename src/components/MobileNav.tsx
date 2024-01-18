@@ -47,31 +47,32 @@ const MobileNav: React.FC<MobileNavProps> = ({
           >
             <div className="relative">
               <div
+                /* Trick tailwind JIT into generating the correct class names bg-skin-primary-100-contrast bg-skin-primary-300-contrast bg-skin-primary-500-contrast bg-skin-primary-700-contrast bg-skin-primary-900-contrast*/
                 className={
                   open
-                    ? `absolute top-0 h-1 w-8 origin-center -translate-y-1/2 rotate-45 rounded-full transition duration-500 ${backgroundColor}-contrast`
-                    : "mb-1.5 h-1 w-8 rounded-full bg-skin-content-on-light dark:bg-skin-content-on-dark transition duration-500"
+                    ? `absolute top-0 h-1 w-8 origin-center -translate-y-1/2 rotate-45 rounded-skin transition duration-500 bg-${backgroundColor}-contrast`
+                    : "mb-1.5 h-1 w-8 rounded-skin bg-skin-on-background transition duration-500"
                 }
               ></div>
               <div
                 className={
                   open
-                    ? `h-1 w-8 rounded-full transition duration-500 ${backgroundColor}-contrast`
-                    : "mb-1.5 h-1 w-8 rounded-full bg-skin-content-on-light dark:bg-skin-content-on-dark transition duration-500"
+                    ? `h-1 w-8 rounded-skin transition duration-500 `
+                    : "mb-1.5 h-1 w-8 rounded-skin bg-skin-on-background transition duration-500"
                 }
               ></div>
               <div
                 className={
                   open
-                    ? `absolute bottom-0 h-1 w-8 origin-center -translate-y-1/2 -rotate-45 rounded-full transition duration-500 ${backgroundColor}-contrast`
-                    : "h-1 w-8 rounded-full bg-skin-content-on-light dark:bg-skin-content-on-dark transition duration-500"
+                    ? `absolute bottom-0 h-1 w-8 origin-center -translate-y-1/2 -rotate-45 rounded-skin transition duration-500 bg-${backgroundColor}-contrast`
+                    : "h-1 w-8 rounded-skin bg-skin-on-background transition duration-500"
                 }
               ></div>
             </div>
           </Popover.Button>
           <Transition
             show={open}
-            className="fixed inset-0 grid place-items-center"
+            className="fixed inset-0 grid place-items-center z-10"
           >
             <Transition.Child
               enter="transition duration-500 ease"
@@ -90,7 +91,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
                 {links.map((link, index) => (
                   <span key={index}>
                     <Transition.Child
-                      enter="transition transform duration-500 ease"
+                      enter="transition transform duration-500 ease delay-100"
                       enterFrom="scale-50 opacity-0 -translate-x-80"
                       enterTo="scale-100 opacity-100 translate-x-0"
                       leave="transition transform duration-500 ease"
@@ -99,7 +100,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
                     >
                       <Popover.Button
                         as={Link}
-                        className="grow text-center text-fluid-xl"
+                        className={`grow text-center text-fluid-xl text-${backgroundColor}-contrast`}
                         href={link.href}
                       >
                         {link.label}

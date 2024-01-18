@@ -3,22 +3,35 @@ import "../src/app/globals.css";
 import type { Preview, StoryFn } from "@storybook/react";
 
 import React from "react";
+import { ThemeProvider } from "../src/components/ThemeProvider";
 import { useEffect } from "react";
 import { withThemeByClassName } from "@storybook/addon-themes";
 
-const withBackground = (Story: StoryFn, context) => {
+const withThemeContext = (Story: StoryFn, context) => {
   const theme = context.globals.theme;
-  const backgroundColor = theme.includes("dark") ? "hsl(0,0%,15%)" : "white";
+  let backgroundColor = "white";
+
+  if (theme.includes("gradient dark")) {
+    backgroundColor = "hsl(0,0%,15%)";
+  } else if (theme.includes("neon dark")) {
+    backgroundColor = "hsl(0,0%,0%)";
+  }
 
   useEffect(() => {
     document.body.style.backgroundColor = backgroundColor;
-    // Set the background color for the doc stories as well
-    document
-      .querySelector(".docs-story")
-      ?.setAttribute("style", `background-color: ${backgroundColor}`);
+    // Set the background color for all .docs-story elements
+    document.querySelectorAll(".docs-story").forEach((el) => {
+      el.setAttribute("style", `background-color: ${backgroundColor}`);
+    });
   }, [backgroundColor]);
 
-  return <Story {...context} />;
+  return (
+    <ThemeProvider>
+      <div style={{ padding: "3rem" }}>
+        <Story {...context} />
+      </div>
+    </ThemeProvider>
+  );
 };
 
 const preview: Preview = {
@@ -32,7 +45,7 @@ const preview: Preview = {
       },
       defaultTheme: "gradient light",
     }),
-    withBackground,
+    withThemeContext,
   ],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
