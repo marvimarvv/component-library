@@ -2,9 +2,9 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-const ThemeContext = createContext();
+const ThemeContext = createContext(null);
 
-export const ThemeProvider = ({ children }) => {
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState("gradient-theme"); // Default theme
   const [mode, setMode] = useState("light"); // Default mode
 
@@ -41,6 +41,28 @@ export const ThemeProvider = ({ children }) => {
     };
   }, []);
 
+  // Process the theme change event from the Strorybook preview
+  useEffect(() => {
+    const handleStorybookThemeChange = (event: any) => {
+      // Map the dropdown options to the corresponding theme context
+      const themeClassMap: { [key: string]: string } = {
+        "gradient light": "gradient-theme",
+        "gradient dark": "gradient-theme",
+        "neon light": "neon-theme",
+        "neon dark": "neon-theme",
+      };
+      const themeClass = themeClassMap[event.detail];
+
+      setTheme(themeClass);
+    };
+
+    window.addEventListener("themeChange", handleStorybookThemeChange);
+
+    return () => {
+      window.removeEventListener("themeChange", handleStorybookThemeChange);
+    };
+  }, []);
+
   const toggleTheme = () => {
     const newTheme =
       theme === "gradient-theme" ? "neon-theme" : "gradient-theme";
@@ -57,7 +79,9 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, mode, toggleTheme, toggleMode }}>
+    <ThemeContext.Provider
+      value={{ theme, mode, toggleTheme, toggleMode } as any}
+    >
       {children}
     </ThemeContext.Provider>
   );

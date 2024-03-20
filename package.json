@@ -13,6 +13,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@storybook/addon-a11y": "^7.5.3",
+    "@storybook/addon-toolbars": "^7.6.17",
     "class-variance-authority": "^0.7.0",
     "framer-motion": "^10.17.9",
     "next": "13.5.4",

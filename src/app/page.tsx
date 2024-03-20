@@ -2,6 +2,7 @@
 
 import Button from "../components/Button";
 import MobileNav from "@/components/MobileNav";
+import ModeToggle from "@/components/ModeToggle";
 import ThemeToggle from "@/components/ThemeToggle";
 import { motion } from "framer-motion";
 
@@ -55,6 +56,7 @@ export default function Home() {
         </motion.div>
       </motion.div>
       <ThemeToggle />
+      <ModeToggle />
     </main>
   );
 }

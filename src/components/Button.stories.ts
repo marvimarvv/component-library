@@ -42,6 +42,7 @@ export const Secondary: Story = {
 
 export const Large: Story = {
   args: {
+    intent: "primary",
     size: "large",
     label: "Button",
   },
@@ -49,6 +50,7 @@ export const Large: Story = {
 
 export const Medium: Story = {
   args: {
+    intent: "primary",
     size: "medium",
     label: "Button",
   },
@@ -56,6 +58,7 @@ export const Medium: Story = {
 
 export const Small: Story = {
   args: {
+    intent: "primary",
     size: "small",
     label: "Button",
   },
