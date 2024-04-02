@@ -32,7 +32,8 @@ function Layout({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme() || ({} as { theme: string }); // Set default value as empty object if useTheme() returns null
 
   return (
-    <html lang="en">
+    // Set background color to define overscroll color
+    <html lang="en" className="bg-skin-primary-500">
       <body
         className={
           theme === "gradient-theme" ? figtree.className : dotGothic16.className

@@ -61,28 +61,44 @@
 }
 
 @layer utilities {
-  .gradient-button {
-    &,
-    &::before {
-      background-size: 200% 200%;
-      background-position: left top;
-      transition: all 0.3s ease;
+  .gradient-theme {
+    &-hero-bg {
+      background-image: radial-gradient(
+          at 8% 44%,
+          hsla(204, 86%, 69%, 1) 0px,
+          transparent 50%
+        ),
+        radial-gradient(at 70% 74%, hsla(37, 96%, 74%, 1) 0px, transparent 50%),
+        radial-gradient(at 3% 18%, hsla(308, 75%, 62%, 1) 0px, transparent 50%),
+        radial-gradient(at 34% 7%, hsla(222, 85%, 65%, 1) 0px, transparent 50%),
+        radial-gradient(at 75% 13%, hsla(257, 85%, 71%, 1) 0px, transparent 50%),
+        radial-gradient(at 58% 39%, hsla(264, 98%, 69%, 1) 0px, transparent 50%),
+        radial-gradient(at 37% 55%, hsla(264, 67%, 74%, 1) 0px, transparent 50%);
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover,
-      &:hover::before {
-        background-position: right bottom;
+    &-button {
+      &,
+      &::before {
+        background-size: 200% 200%;
+        background-position: left top;
+        transition: all 0.3s ease;
       }
-    }
 
-    &:active {
-      box-shadow: 3px 0px 10px 1px hsl(var(--color-primary-300)),
-        0px 3px 10px 1px hsl(var(--color-primary-300));
+      @media (hover: hover) and (pointer: fine) {
+        &:hover,
+        &:hover::before {
+          background-position: right bottom;
+        }
+      }
+
+      &:active {
+        box-shadow: 3px 0px 10px 1px hsl(var(--color-primary-300)),
+          0px 3px 10px 1px hsl(var(--color-primary-300));
+      }
     }
   }
 
-  .neon-button-secondary-border {
+  .neon-theme-button-secondary-border {
     box-shadow: inset 3px 0px 0px hsl(var(--color-primary-500)),
       inset 0px 3px 0px hsl(var(--color-primary-500));
   }

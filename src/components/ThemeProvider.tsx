@@ -23,7 +23,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     setMode(savedMode);
 
     // Apply theme and mode
-    document.documentElement.className = `${savedTheme} ${savedMode}`;
+    document.documentElement.classList.add(savedTheme);
+    document.documentElement.classList.add(savedMode);
 
     // Listen for changes in the preferred color scheme
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");

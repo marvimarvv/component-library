@@ -11,67 +11,71 @@ export default function Home() {
   const { theme } = useTheme() || ({} as { theme: string });
 
   return (
-    <main
-      className="flex min-h-screen flex-col justify-between p-24 bg-skin-background"
-      style={{
-        backgroundImage:
-          "radial-gradient(at 8% 44%, hsla(204,86%,69%,1) 0px, transparent 50%), radial-gradient(at 70% 74%, hsla(37,96%,74%,1) 0px, transparent 50%), radial-gradient(at 3% 18%, hsla(308,75%,62%,1) 0px, transparent 50%), radial-gradient(at 34% 7%, hsla(222,85%,65%,1) 0px, transparent 50%), radial-gradient(at 75% 13%, hsla(257,85%,71%,1) 0px, transparent 50%), radial-gradient(at 58% 39%, hsla(264,98%,69%,1) 0px, transparent 50%), radial-gradient(at 37% 55%, hsla(264,67%,74%,1) 0px, transparent 50%);",
-      }}
-    >
-      <MobileNav
-        links={[
-          { label: "Home", href: "/" },
-          { label: "About", href: "/about" },
-          { label: "Contact", href: "/contact" },
-        ]}
-        backgroundColor="skin-primary-500"
-      />
-      <h1 className="flex flex-col">
-        <span
-          className={`text-fluid-3xl md:text-[170px] text-skin-primary-500 ${
-            theme === "gradient-theme"
-              ? "text-transparent bg-clip-text bg-gradient-to-br from-skin-primary-100 via-skin-primary-500 to-skin-primary-100"
-              : ""
-          }`}
-        >
-          Welcome
-        </span>
-        <span className="text-fluid-l text-skin-on-background">
-          to my component library
-        </span>
-      </h1>
-      <motion.div
-        className="flex gap-space-m"
-        initial="initial"
-        animate="animate"
-        variants={{
-          initial: { opacity: 0, scale: 0 },
-          animate: {
-            opacity: 1,
-            scale: 1,
-            transition: { staggerChildren: 0.5 },
-          },
-        }}
+    <main className="h-screen overflow-y-scroll snap-y snap-mandatory">
+      <div
+        className={`flex h-screen flex-col justify-between p-space-m-l bg-skin-background snap-start ${
+          theme === "gradient-theme" ? "gradient-theme-hero-bg" : ""
+        }`}
       >
-        <motion.div
-          variants={{
-            initial: { opacity: 0, scale: 0 },
-            animate: { opacity: 1, scale: 1 },
-          }}
+        <MobileNav
+          links={[
+            { label: "Start", href: "/" },
+            { label: "Buttons", href: "/#buttons" },
+            { label: "Mobile Menu", href: "/#mobile-menu" },
+          ]}
+          backgroundColor="skin-primary-500"
+        />
+        <motion.h1
+          className="flex flex-col"
+          initial="inital"
+          animate="animate"
+          transition={{ staggerChildren: 0.5 }}
         >
-          <Button intent="primary" label="Button" />
-        </motion.div>
-        <motion.div
-          variants={{
-            initial: { opacity: 0, scale: 0 },
-            animate: { opacity: 1, scale: 1 },
-          }}
-        >
-          <Button intent="secondary" label="Button" />
-        </motion.div>
-      </motion.div>
-      <ThemeToggle />
-      <ModeToggle />
+          <motion.span
+            variants={{
+              inital: { opacity: 0, y: 100 },
+              animate: {
+                opacity: 1,
+
+                y: 0,
+                transition: { duration: 1 },
+              },
+            }}
+            className={`text-fluid-3xl md:text-[170px] text-skin-primary-500 ${
+              theme === "gradient-theme"
+                ? "text-transparent bg-clip-text bg-gradient-to-br from-skin-primary-100 via-skin-primary-500 to-skin-primary-100"
+                : ""
+            }`}
+          >
+            Welcome
+          </motion.span>
+          <motion.span
+            variants={{
+              inital: { opacity: 0, y: 100 },
+              animate: {
+                opacity: 1,
+
+                y: 0,
+                originY: 0.5,
+                transition: { duration: 1 },
+              },
+            }}
+            className="text-fluid-l text-skin-on-background"
+          >
+            to my component library
+          </motion.span>
+        </motion.h1>
+        <ThemeToggle />
+        <ModeToggle />
+      </div>
+      <div
+        id="buttons"
+        className="h-screen snap-start bg-skin-primary-900"
+      ></div>
+      <div
+        id="mobile-menu"
+        className="h-screen snap-start bg-skin-primary-300"
+      ></div>
     </main>
   );
 }

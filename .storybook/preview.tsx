@@ -1,4 +1,3 @@
-import "!style-loader!css-loader!postcss-loader!tailwindcss/tailwind.css";
 import "../src/app/globals.css";
 
 import type { Preview, StoryFn } from "@storybook/react";
@@ -69,6 +68,7 @@ const preview: Preview = {
   decorators: [withThemeContext],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
+    backgrounds: { disable: true },
     controls: {
       matchers: {
         color: /(background|color)$/i,
