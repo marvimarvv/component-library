@@ -12,11 +12,21 @@ export default function Home() {
 
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory">
-      <div
-        className={`flex h-screen flex-col justify-between p-space-m-l bg-skin-background snap-start ${
-          theme === "gradient-theme" ? "gradient-theme-hero-bg" : ""
-        }`}
-      >
+      <div className="flex h-screen flex-col justify-between p-space-m-l snap-start">
+        <div className="inset-0 absolute -z-10 bg-skin-background"></div>
+        {theme === "gradient-theme" ? (
+          <>
+            <div className="inset-0 absolute -z-10 gradient-theme-bg gradient-theme-bg--1"></div>
+            <div className="inset-0 absolute -z-10 gradient-theme-bg gradient-theme-bg--2"></div>
+            <div className="inset-0 absolute -z-10 gradient-theme-bg gradient-theme-bg--3"></div>
+            <div className="inset-0 absolute -z-10 gradient-theme-bg gradient-theme-bg--4"></div>
+            <div className="inset-0 absolute -z-10 gradient-theme-bg gradient-theme-bg--5"></div>
+            <div className="inset-0 absolute -z-10 gradient-theme-bg gradient-theme-bg--6"></div>
+            <div className="inset-0 absolute -z-10 gradient-theme-bg gradient-theme-bg--7"></div>
+          </>
+        ) : (
+          ""
+        )}
         <MobileNav
           links={[
             { label: "Start", href: "/" },
@@ -24,9 +34,10 @@ export default function Home() {
             { label: "Mobile Menu", href: "/#mobile-menu" },
           ]}
           backgroundColor="skin-primary-500"
+          className="fixed top-space-m-l left-space-m-l"
         />
         <motion.h1
-          className="flex flex-col"
+          className="flex flex-col justify-center h-full"
           initial="inital"
           animate="animate"
           transition={{ staggerChildren: 0.5 }}
@@ -60,13 +71,13 @@ export default function Home() {
                 transition: { duration: 1 },
               },
             }}
-            className="text-fluid-l text-skin-on-background"
+            className="text-fluid-l text-skin-background-contrast"
           >
             to my component library
           </motion.span>
         </motion.h1>
         <ThemeToggle />
-        <ModeToggle />
+        <ModeToggle className="fixed top-space-m-l right-space-m-l" />
       </div>
       <div
         id="buttons"

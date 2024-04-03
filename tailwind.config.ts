@@ -92,7 +92,7 @@ const config: Config = {
           background: withOpacity("--color-background")({
             opacityValue: 1,
           }),
-          "on-background": withOpacity("--color-on-background")({
+          "background-contrast": withOpacity("--color-background-contrast")({
             opacityValue: 1,
           }),
         },

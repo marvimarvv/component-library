@@ -21,11 +21,11 @@
     --color-primary-900-contrast-muted: 0, 0%, 60%;
 
     --color-background: 0, 0%, 100%;
-    --color-on-background: 0, 0%, 15%;
+    --color-background-contrast: 0, 0%, 15%;
 
     &.dark {
       --color-background: 0, 0%, 15%;
-      --color-on-background: 0, 0%, 100%;
+      --color-background-contrast: 0, 0%, 100%;
     }
 
     --border-radius: 999rem;
@@ -49,11 +49,11 @@
     --color-primary-900-contrast-muted: 0, 0%, 65%;
 
     --color-background: 0, 0%, 100%;
-    --color-on-background: 0, 0%, 0%;
+    --color-background-contrast: 0, 0%, 0%;
 
     &.dark {
       --color-background: 0, 0%, 0%;
-      --color-on-background: 0, 0%, 100%;
+      --color-background-contrast: 0, 0%, 100%;
     }
 
     --border-radius: 0rem;
@@ -62,18 +62,86 @@
 
 @layer utilities {
   .gradient-theme {
-    &-hero-bg {
+    &-bg {
+      background-size: 150% 150%;
+      animation: gradient-bg 20s ease infinite alternate;
+
+      @keyframes gradient-bg {
+        0% {
+          background-position: 10% 0%;
+        }
+        20% {
+          background-position: 55% 100%;
+        }
+        40% {
+          background-position: 100% 30%;
+        }
+        60% {
+          background-position: 78% 0%;
+        }
+        80% {
+          background-position: 33% 70%;
+        }
+        100% {
+          background-position: 66% 50%;
+        }
+      }
+    }
+
+    &-bg--1 {
       background-image: radial-gradient(
-          at 8% 44%,
-          hsla(204, 86%, 69%, 1) 0px,
-          transparent 50%
-        ),
-        radial-gradient(at 70% 74%, hsla(37, 96%, 74%, 1) 0px, transparent 50%),
-        radial-gradient(at 3% 18%, hsla(308, 75%, 62%, 1) 0px, transparent 50%),
-        radial-gradient(at 34% 7%, hsla(222, 85%, 65%, 1) 0px, transparent 50%),
-        radial-gradient(at 75% 13%, hsla(257, 85%, 71%, 1) 0px, transparent 50%),
-        radial-gradient(at 58% 39%, hsla(264, 98%, 69%, 1) 0px, transparent 50%),
-        radial-gradient(at 37% 55%, hsla(264, 67%, 74%, 1) 0px, transparent 50%);
+        at 8% 44%,
+        hsla(204, 86%, 69%, 1) 0px,
+        transparent 50%
+      );
+    }
+
+    &-bg--2 {
+      background-image: radial-gradient(
+        at 70% 74%,
+        hsla(37, 96%, 74%, 1) 0px,
+        transparent 50%
+      );
+    }
+
+    &-bg--3 {
+      background-image: radial-gradient(
+        at 3% 18%,
+        hsla(308, 75%, 62%, 1) 0px,
+        transparent 50%
+      );
+    }
+
+    &-bg--4 {
+      background-image: radial-gradient(
+        at 34% 7%,
+        hsla(222, 85%, 65%, 1) 0px,
+        transparent 50%
+      );
+    }
+
+    &-bg--5 {
+      background-image: radial-gradient(
+        at 75% 13%,
+        hsla(257, 85%, 71%, 1) 0px,
+        transparent 50%
+      );
+    }
+
+    &-bg--6 {
+      background-image: radial-gradient(
+        at 58% 39%,
+        hsla(264, 98%, 69%, 1) 0px,
+        transparent 50%
+      );
+    }
+
+    &-bg--7 {
+      background-image: radial-gradient(
+        at 37% 55%,
+        hsla(264, 67%, 74%, 1) 0px,
+        transparent 50%
+      );
     }
 
     &-button {

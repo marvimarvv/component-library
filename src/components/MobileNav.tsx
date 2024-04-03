@@ -51,21 +51,21 @@ const MobileNav: React.FC<MobileNavProps> = ({
                 className={
                   open
                     ? `absolute top-0 h-1 w-8 origin-center -translate-y-1/2 rotate-45 rounded-skin transition duration-500 bg-${backgroundColor}-contrast`
-                    : "mb-1.5 h-1 w-8 rounded-skin bg-skin-on-background transition duration-500"
+                    : "mb-1.5 h-1 w-8 rounded-skin bg-skin-background-contrast transition duration-500"
                 }
               ></div>
               <div
                 className={
                   open
                     ? `h-1 w-8 rounded-skin transition duration-500 `
-                    : "mb-1.5 h-1 w-8 rounded-skin bg-skin-on-background transition duration-500"
+                    : "mb-1.5 h-1 w-8 rounded-skin bg-skin-background-contrast transition duration-500"
                 }
               ></div>
               <div
                 className={
                   open
                     ? `absolute bottom-0 h-1 w-8 origin-center -translate-y-1/2 -rotate-45 rounded-skin transition duration-500 bg-${backgroundColor}-contrast`
-                    : "h-1 w-8 rounded-skin bg-skin-on-background transition duration-500"
+                    : "h-1 w-8 rounded-skin bg-skin-background-contrast transition duration-500"
                 }
               ></div>
             </div>
