@@ -1,6 +1,6 @@
 import "../src/app/globals.css";
 
-import type { Preview, StoryFn } from "@storybook/react";
+import type { Preview, StoryFn } from "@storybook/nextjs";
 
 import React from "react";
 import { ThemeProvider } from "../src/components/ThemeProvider";
@@ -68,7 +68,7 @@ const preview: Preview = {
   decorators: [withThemeContext],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
-    backgrounds: { disable: true },
+    backgrounds: { disabled: true },
     controls: {
       matchers: {
         color: /(background|color)$/i,

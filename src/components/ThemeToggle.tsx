@@ -1,7 +1,8 @@
 import { useTheme } from "./ThemeProvider";
 
 export default function ThemeToggle() {
-  const { toggleTheme } = useTheme();
+  const themeContext = useTheme();
+  const { toggleTheme } = themeContext || { toggleTheme: () => {} };
   return (
     <button className="text-skin-background-contrast" onClick={toggleTheme}>
       Toggle Theme

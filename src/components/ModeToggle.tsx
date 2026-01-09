@@ -33,9 +33,10 @@ const switchThumbStyles = cva(
 
 export default function ModeToggle({ className }: { className?: string }) {
   const [enabled, setEnabled] = useState(false);
-  const { toggleMode } = useTheme();
-  const { theme } = useTheme() as unknown as {
-    theme: "gradient-theme" | "neon-theme" | null | undefined;
+  const themeContext = useTheme();
+  const { theme, toggleMode } = themeContext || {
+    theme: null,
+    toggleMode: () => {},
   };
 
   return (
@@ -49,10 +50,7 @@ export default function ModeToggle({ className }: { className?: string }) {
         className={switchBgStyles({ enabled, theme })}
       >
         <span className="sr-only">Toggle dark and light mode</span>
-        <span
-          aria-hidden="true"
-          className={switchThumbStyles({ enabled, theme })}
-        />
+        <span aria-hidden="true" className={switchThumbStyles({ enabled })} />
       </Switch>
     </div>
   );

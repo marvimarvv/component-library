@@ -52,11 +52,7 @@ export default function Home() {
                 transition: { duration: 1 },
               },
             }}
-            className={`text-fluid-3xl md:text-[170px] text-skin-primary-500 ${
-              theme === "gradient-theme"
-                ? "text-transparent bg-clip-text bg-gradient-to-br from-skin-primary-100 via-skin-primary-500 to-skin-primary-100"
-                : ""
-            }`}
+            className="text-fluid-3xl md:text-[170px] text-skin-primary-500 leading-none"
           >
             Welcome
           </motion.span>

@@ -70,46 +70,45 @@ const MobileNav: React.FC<MobileNavProps> = ({
               ></div>
             </div>
           </Popover.Button>
-          <Transition
-            show={open}
-            className="fixed inset-0 grid place-items-center z-10"
-          >
-            <Transition.Child
-              enter="transition duration-500 ease"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="transition duration-500 ease"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <Popover.Overlay
-                className={`fixed inset-0 bg-skin-primary-500 ${backgroundColor}`}
-              />
-            </Transition.Child>
-            <Popover.Panel className="fixed inset-0 grid place-items-center">
-              <nav className="flex flex-col items-center justify-center gap-4">
-                {links.map((link, index) => (
-                  <span key={index}>
-                    <Transition.Child
-                      enter="transition transform duration-500 ease delay-100"
-                      enterFrom="scale-50 opacity-0 -translate-x-80"
-                      enterTo="scale-100 opacity-100 translate-x-0"
-                      leave="transition transform duration-500 ease"
-                      leaveFrom="scale-100 opacity-100 translate-x-0"
-                      leaveTo="scale-0 opacity-0 -translate-x-80"
-                    >
-                      <Popover.Button
-                        as={Link}
-                        className={`grow text-center text-fluid-xl text-${backgroundColor}-contrast`}
-                        href={link.href}
+          <Transition show={open}>
+            <div className="fixed inset-0 grid place-items-center z-10">
+              <Transition.Child
+                enter="transition duration-500 ease"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition duration-500 ease"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Popover.Overlay
+                  className={`fixed inset-0 bg-skin-primary-500 ${backgroundColor}`}
+                />
+              </Transition.Child>
+              <Popover.Panel className="fixed inset-0 grid place-items-center">
+                <nav className="flex flex-col items-center justify-center gap-4">
+                  {links.map((link, index) => (
+                    <span key={index}>
+                      <Transition.Child
+                        enter="transition transform duration-500 ease delay-100"
+                        enterFrom="scale-50 opacity-0 -translate-x-80"
+                        enterTo="scale-100 opacity-100 translate-x-0"
+                        leave="transition transform duration-500 ease"
+                        leaveFrom="scale-100 opacity-100 translate-x-0"
+                        leaveTo="scale-0 opacity-0 -translate-x-80"
                       >
-                        {link.label}
-                      </Popover.Button>
-                    </Transition.Child>
-                  </span>
-                ))}
-              </nav>
-            </Popover.Panel>
+                        <Popover.Button
+                          as={Link}
+                          className={`grow text-center text-fluid-xl text-${backgroundColor}-contrast`}
+                          href={link.href}
+                        >
+                          {link.label}
+                        </Popover.Button>
+                      </Transition.Child>
+                    </span>
+                  ))}
+                </nav>
+              </Popover.Panel>
+            </div>
           </Transition>
         </>
       )}
