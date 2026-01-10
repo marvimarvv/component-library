@@ -40,7 +40,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
       {({ open }) => (
         <>
           <Popover.Button
-            className="relative z-20 text-fluid-xl focus:outline-none focus-visible:outline aspect-square"
+            className="relative z-20 text-fluid-xl focus:outline-hidden focus-visible:outline-solid aspect-square"
             onClick={() => {
               hidePageContent();
             }}

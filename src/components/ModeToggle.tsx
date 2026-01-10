@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTheme } from "./ThemeProvider";
 
 const switchBgStyles = cva(
-  "relative inline-flex h-space-l w-space-2xl shrink-0 cursor-pointer rounded-skin transition-colors duration-200 ease outline-2 outline-slate-500 outline focus:outline-none focus-visible:ring-2  focus-visible:ring-white/75",
+  "relative inline-flex h-space-l w-space-2xl shrink-0 cursor-pointer rounded-skin transition-colors duration-200 ease outline-2 outline-slate-500 outline-solid focus:outline-hidden focus-visible:ring-2  focus-visible:ring-white/75",
   {
     variants: {
       enabled: {

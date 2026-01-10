@@ -1,6 +1,115 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@config '../../tailwind.config.ts';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer utilities {
+  @keyframes gradient-bg {
+    0% {
+      background-position: 10% 0%;
+    }
+    20% {
+      background-position: 55% 100%;
+    }
+    40% {
+      background-position: 100% 30%;
+    }
+    60% {
+      background-position: 78% 0%;
+    }
+    80% {
+      background-position: 33% 70%;
+    }
+    100% {
+      background-position: 66% 50%;
+    }
+  }
+
+  .gradient-theme-bg {
+    background-size: 150% 150%;
+    animation: gradient-bg 20s ease infinite alternate;
+  }
+
+  .gradient-theme-bg--1 {
+    background-image: radial-gradient(
+      at 8% 44%,
+      hsla(204, 86%, 69%, 1) 0px,
+      transparent 50%
+    );
+  }
+
+  .gradient-theme-bg--2 {
+    background-image: radial-gradient(
+      at 70% 74%,
+      hsla(37, 96%, 74%, 1) 0px,
+      transparent 50%
+    );
+  }
+
+  .gradient-theme-bg--3 {
+    background-image: radial-gradient(
+      at 3% 18%,
+      hsla(308, 75%, 62%, 1) 0px,
+      transparent 50%
+    );
+  }
+
+  .gradient-theme-bg--4 {
+    background-image: radial-gradient(
+      at 34% 7%,
+      hsla(222, 85%, 65%, 1) 0px,
+      transparent 50%
+    );
+  }
+
+  .gradient-theme-bg--5 {
+    background-image: radial-gradient(
+      at 75% 13%,
+      hsla(257, 85%, 71%, 1) 0px,
+      transparent 50%
+    );
+  }
+
+  .gradient-theme-bg--6 {
+    background-image: radial-gradient(
+      at 58% 39%,
+      hsla(264, 98%, 69%, 1) 0px,
+      transparent 50%
+    );
+  }
+
+  .gradient-theme-bg--7 {
+    background-image: radial-gradient(
+      at 37% 55%,
+      hsla(264, 67%, 74%, 1) 0px,
+      transparent 50%
+    );
+  }
+}
+
+@layer utilities {
+  .neon-theme-button-secondary-border {
+    box-shadow: inset 3px 0px 0px hsl(var(--color-primary-500)),
+      inset 0px 3px 0px hsl(var(--color-primary-500));
+  }
+}
 
 @layer base {
   .gradient-theme {
@@ -57,96 +166,5 @@
     }
 
     --border-radius: 0rem;
-  }
-}
-
-@layer utilities {
-  .gradient-theme {
-    &-bg {
-      background-size: 150% 150%;
-      animation: gradient-bg 20s ease infinite alternate;
-
-      @keyframes gradient-bg {
-        0% {
-          background-position: 10% 0%;
-        }
-        20% {
-          background-position: 55% 100%;
-        }
-        40% {
-          background-position: 100% 30%;
-        }
-        60% {
-          background-position: 78% 0%;
-        }
-        80% {
-          background-position: 33% 70%;
-        }
-        100% {
-          background-position: 66% 50%;
-        }
-      }
-    }
-
-    &-bg--1 {
-      background-image: radial-gradient(
-        at 8% 44%,
-        hsla(204, 86%, 69%, 1) 0px,
-        transparent 50%
-      );
-    }
-
-    &-bg--2 {
-      background-image: radial-gradient(
-        at 70% 74%,
-        hsla(37, 96%, 74%, 1) 0px,
-        transparent 50%
-      );
-    }
-
-    &-bg--3 {
-      background-image: radial-gradient(
-        at 3% 18%,
-        hsla(308, 75%, 62%, 1) 0px,
-        transparent 50%
-      );
-    }
-
-    &-bg--4 {
-      background-image: radial-gradient(
-        at 34% 7%,
-        hsla(222, 85%, 65%, 1) 0px,
-        transparent 50%
-      );
-    }
-
-    &-bg--5 {
-      background-image: radial-gradient(
-        at 75% 13%,
-        hsla(257, 85%, 71%, 1) 0px,
-        transparent 50%
-      );
-    }
-
-    &-bg--6 {
-      background-image: radial-gradient(
-        at 58% 39%,
-        hsla(264, 98%, 69%, 1) 0px,
-        transparent 50%
-      );
-    }
-
-    &-bg--7 {
-      background-image: radial-gradient(
-        at 37% 55%,
-        hsla(264, 67%, 74%, 1) 0px,
-        transparent 50%
-      );
-    }
-  }
-
-  .neon-theme-button-secondary-border {
-    box-shadow: inset 3px 0px 0px hsl(var(--color-primary-500)),
-      inset 0px 3px 0px hsl(var(--color-primary-500));
   }
 }

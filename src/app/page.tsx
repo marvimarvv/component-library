@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "../components/Button";
 import MobileNav from "@/components/MobileNav";
 import ModeToggle from "@/components/ModeToggle";
 import ThemeToggle from "@/components/ThemeToggle";
