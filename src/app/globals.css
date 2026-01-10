@@ -143,27 +143,6 @@
         transparent 50%
       );
     }
-
-    &-button {
-      &,
-      &::before {
-        background-size: 200% 200%;
-        background-position: left top;
-        transition: all 0.3s ease;
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:hover,
-        &:hover::before {
-          background-position: right bottom;
-        }
-      }
-
-      &:active {
-        box-shadow: 3px 0px 10px 1px hsl(var(--color-primary-300)),
-          0px 3px 10px 1px hsl(var(--color-primary-300));
-      }
-    }
   }
 
   .neon-theme-button-secondary-border {

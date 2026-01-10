@@ -53,8 +53,11 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
         "neon dark": "neon-theme",
       };
       const themeClass = themeClassMap[event.detail];
+      const newMode = event.detail.includes("dark") ? "dark" : "light";
 
       setTheme(themeClass);
+      setMode(newMode);
+      document.documentElement.className = `${themeClass} ${newMode}`;
     };
 
     window.addEventListener("themeChange", handleStorybookThemeChange);

@@ -1,7 +1,7 @@
 "use client";
 
 import { cva } from "class-variance-authority";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "../components/ThemeProvider";
 
 interface ButtonProps {
   /** You can also describe what a prop does and it'll show up in Storybook autodocs */
@@ -13,7 +13,7 @@ interface ButtonProps {
 }
 
 const buttonStyles = cva(
-  "pointer-cursor rounded-skin font-bold visited:no-underline focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-skin-primary-500 focus-visible:outline-offset-2 dark:focus-visible:outline-skin-primary-100",
+  "pointer-cursor rounded-skin font-bold visited:no-underline focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-skin-primary-500 focus-visible:outline-offset-2",
   {
     variants: {
       intent: {
@@ -30,7 +30,7 @@ const buttonStyles = cva(
       },
       theme: {
         "gradient-theme":
-          "gradient-theme-button bg-gradient-to-br from-skin-primary-300 via-skin-primary-700 to-skin-primary-300 font-normal dark:from-skin-primary-100 dark:via-skin-primary-300 dark:to-skin-primary-100 dark:text-skin-primary-700 bg-[length:130%_150%] bg-[position:10%_top] hover:bg-[position:10%_bottom] active:shadow-[0px_3px_12px_6px_hsl(var(--color-primary-100))] transition-[background-position_box-shadow] duration-200 ease-out before:bg-[length:130%_150%] before:bg-[position:10%_top] hover:before:bg-[position:10%_bottom]",
+          "gradient-theme-button bg-gradient-to-br from-skin-primary-300 via-skin-primary-700 to-skin-primary-300 font-normal dark:from-skin-primary-100 dark:via-skin-primary-300 dark:to-skin-primary-100 dark:text-skin-primary-700",
         "neon-theme":
           "-translate-y-[.5em] active:after:w-[.1em] active:after:-right-[.1em] active:after:-bottom-[.1em] active:before:h-[.1em] active:before:-right-[.1em] active:before:-bottom-[.1em] active:translate-y-0 active:translate-x-[.3em] after:transition-all after:duration-150 bg-skin-primary-500 relative transition-all duration-150 after:absolute after:h-full after:w-[0.5em] after:right-[-0.5em] after:bottom-[-0.25em] after:bg-skin-primary-700 after:skew-y-[45deg] before:absolute before:-right-[0.25em] before:-bottom-[0.5em] before:w-full before:h-[0.5em] before:skew-x-[45deg] before:bg-skin-primary-900 dark:before:bg-skin-primary-700 before:transition-all before:duration-150",
       },

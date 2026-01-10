@@ -1,8 +1,8 @@
 import "../src/app/globals.css";
 
-import type { Preview, StoryFn } from "@storybook/nextjs";
+import type { Decorator, StoryContext } from "@storybook/react";
 
-import React from "react";
+import type { Preview } from "@storybook/nextjs";
 import { ThemeProvider } from "../src/components/ThemeProvider";
 import { useEffect } from "react";
 
@@ -21,8 +21,8 @@ export const globalTypes = {
   },
 };
 
-const withThemeContext = (Story: StoryFn, context) => {
-  const theme = context.globals.theme;
+const withThemeContext: Decorator = (Story, context: StoryContext) => {
+  const theme = context.globals.theme as keyof typeof themeClassMap;
 
   // Map the theme name to the corresponding class
   const themeClassMap = {
@@ -35,9 +35,9 @@ const withThemeContext = (Story: StoryFn, context) => {
 
   let backgroundColor = "white";
 
-  if (theme.includes("gradient dark")) {
+  if (theme === "gradient dark") {
     backgroundColor = "hsl(0,0%,15%)";
-  } else if (theme.includes("neon dark")) {
+  } else if (theme === "neon dark") {
     backgroundColor = "hsl(0,0%,0%)";
   }
 
