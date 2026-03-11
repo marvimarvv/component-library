@@ -8,8 +8,8 @@ const switchBgStyles = cva(
   {
     variants: {
       enabled: {
-        true: "bg-skin-primary-300",
-        false: "bg-skin-primary-900",
+        true: "bg-primary-300",
+        false: "bg-primary-900",
       },
       theme: {
         "gradient-theme": "",
@@ -20,7 +20,7 @@ const switchBgStyles = cva(
 );
 
 const switchThumbStyles = cva(
-  "pointer-events-none inline-block h-full aspect-square transform rounded-skin bg-skin-background shadow-lg ring-0 transition duration-200 ease",
+  "pointer-events-none inline-block h-full aspect-square transform rounded-skin bg-background shadow-lg ring-0 transition duration-200 ease",
   {
     variants: {
       enabled: {

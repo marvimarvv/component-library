@@ -33,7 +33,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     // Set background color to define overscroll color
-    <html lang="en" className="bg-skin-primary-500">
+    <html lang="en" className="bg-primary-500">
       <body
         className={
           theme === "gradient-theme" ? figtree.className : dotGothic16.className

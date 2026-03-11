@@ -1,22 +1,70 @@
 @import "tailwindcss";
 
-@config '../../tailwind.config.ts';
+@config "../../tailwind.config.ts";
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .gradient-theme {
+    --color-primary-100: 250, 67%, 90%;
+    --color-primary-100-contrast: 0, 0%, 15%;
+    --color-primary-100-contrast-muted: 0, 0%, 46%;
+    --color-primary-300: 250, 67%, 70%;
+    --color-primary-300-contrast: 0, 0%, 15%;
+    --color-primary-300-contrast-muted: 0, 0%, 46%;
+    --color-primary-500: 250, 67%, 50%;
+    --color-primary-500-contrast: 0, 0%, 100%;
+    --color-primary-500-contrast-muted: 0, 0%, 60%;
+    --color-primary-700: 250, 67%, 30%;
+    --color-primary-700-contrast: 0, 0%, 100%;
+    --color-primary-700-contrast-muted: 0, 0%, 60%;
+    --color-primary-900: 250, 67%, 10%;
+    --color-primary-900-contrast: 0, 0%, 100%;
+    --color-primary-900-contrast-muted: 0, 0%, 60%;
+
+    --color-background: 0, 0%, 100%;
+    --color-background-contrast: 0, 0%, 15%;
+
+    &.dark {
+      --color-background: 0, 0%, 15%;
+      --color-background-contrast: 0, 0%, 100%;
+    }
+
+    --border-radius: 999rem;
+  }
+
+  .neon-theme {
+    --color-primary-100: 110, 80%, 90%;
+    --color-primary-100-contrast: 0, 0%, 15%;
+    --color-primary-100-contrast-muted: 0, 0%, 42%;
+    --color-primary-300: 110, 67%, 70%;
+    --color-primary-300-contrast: 0, 0%, 0%;
+    --color-primary-300-contrast-muted: 0, 0%, 42%;
+    --color-primary-500: 110, 80%, 50%;
+    --color-primary-500-contrast: 0, 0%, 0%;
+    --color-primary-500-contrast-muted: 0, 0%, 42%;
+    --color-primary-700: 110, 67%, 30%;
+    --color-primary-700-contrast: 0, 0%, 0%;
+    --color-primary-700-contrast-muted: 0, 0%, 65%;
+    --color-primary-900: 110, 80%, 10%;
+    --color-primary-900-contrast: 0, 0%, 100%;
+    --color-primary-900-contrast-muted: 0, 0%, 65%;
+
+    --color-background: 0, 0%, 100%;
+    --color-background-contrast: 0, 0%, 0%;
+
+    &.dark {
+      --color-background: 0, 0%, 0%;
+      --color-background-contrast: 0, 0%, 100%;
+    }
+
+    --border-radius: 0rem;
   }
 }
 
@@ -102,69 +150,10 @@
       transparent 50%
     );
   }
-}
 
-@layer utilities {
   .neon-theme-button-secondary-border {
-    box-shadow: inset 3px 0px 0px hsl(var(--color-primary-500)),
+    box-shadow:
+      inset 3px 0px 0px hsl(var(--color-primary-500)),
       inset 0px 3px 0px hsl(var(--color-primary-500));
-  }
-}
-
-@layer base {
-  .gradient-theme {
-    --color-primary-100: 250, 67%, 90%;
-    --color-primary-100-contrast: 0, 0%, 15%;
-    --color-primary-100-contrast-muted: 0, 0%, 46%;
-    --color-primary-300: 250, 67%, 70%;
-    --color-primary-300-contrast: 0, 0%, 15%;
-    --color-primary-300-contrast-muted: 0, 0%, 46%;
-    --color-primary-500: 250, 67%, 50%;
-    --color-primary-500-contrast: 0, 0%, 100%;
-    --color-primary-500-contrast-muted: 0, 0%, 60%;
-    --color-primary-700: 250, 67%, 30%;
-    --color-primary-700-contrast: 0, 0%, 100%;
-    --color-primary-700-contrast-muted: 0, 0%, 60%;
-    --color-primary-900: 250, 67%, 10%;
-    --color-primary-900-contrast: 0, 0%, 100%;
-    --color-primary-900-contrast-muted: 0, 0%, 60%;
-
-    --color-background: 0, 0%, 100%;
-    --color-background-contrast: 0, 0%, 15%;
-
-    &.dark {
-      --color-background: 0, 0%, 15%;
-      --color-background-contrast: 0, 0%, 100%;
-    }
-
-    --border-radius: 999rem;
-  }
-
-  .neon-theme {
-    --color-primary-100: 110, 80%, 90%;
-    --color-primary-100-contrast: 0, 0%, 15%;
-    --color-primary-100-contrast-muted: 0, 0%, 42%;
-    --color-primary-300: 110, 67%, 70%;
-    --color-primary-300-contrast: 0, 0%, 0%;
-    --color-primary-300-contrast-muted: 0, 0%, 42%;
-    --color-primary-500: 110, 80%, 50%;
-    --color-primary-500-contrast: 0, 0%, 0%;
-    --color-primary-500-contrast-muted: 0, 0%, 42%;
-    --color-primary-700: 110, 67%, 30%;
-    --color-primary-700-contrast: 0, 0%, 0%;
-    --color-primary-700-contrast-muted: 0, 0%, 65%;
-    --color-primary-900: 110, 80%, 10%;
-    --color-primary-900-contrast: 0, 0%, 100%;
-    --color-primary-900-contrast-muted: 0, 0%, 65%;
-
-    --color-background: 0, 0%, 100%;
-    --color-background-contrast: 0, 0%, 0%;
-
-    &.dark {
-      --color-background: 0, 0%, 0%;
-      --color-background-contrast: 0, 0%, 100%;
-    }
-
-    --border-radius: 0rem;
   }
 }

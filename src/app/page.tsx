@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory">
       <div className="flex h-screen flex-col justify-between p-space-m-l snap-start">
-        <div className="inset-0 absolute -z-10 bg-skin-background"></div>
+        <div className="inset-0 absolute -z-10 bg-background"></div>
         {theme === "gradient-theme" ? (
           <>
             <div className="inset-0 absolute -z-10 gradient-theme-bg gradient-theme-bg--1"></div>
@@ -32,7 +32,7 @@ export default function Home() {
             { label: "Buttons", href: "/#buttons" },
             { label: "Mobile Menu", href: "/#mobile-menu" },
           ]}
-          backgroundColor="skin-primary-500"
+          backgroundColor="primary-500"
           className="fixed top-space-m-l left-space-m-l"
         />
         <motion.h1
@@ -51,7 +51,7 @@ export default function Home() {
                 transition: { duration: 1 },
               },
             }}
-            className="text-fluid-3xl md:text-[170px] text-skin-primary-500 leading-none"
+            className="text-fluid-3xl md:text-[170px] text-primary-500 leading-none"
           >
             Welcome
           </motion.span>
@@ -66,7 +66,7 @@ export default function Home() {
                 transition: { duration: 1 },
               },
             }}
-            className="text-fluid-l text-skin-background-contrast"
+            className="text-fluid-l text-background-contrast"
           >
             to my component library
           </motion.span>
@@ -76,11 +76,11 @@ export default function Home() {
       </div>
       <div
         id="buttons"
-        className="h-screen snap-start bg-skin-primary-900"
+        className="h-screen snap-start bg-primary-900"
       ></div>
       <div
         id="mobile-menu"
-        className="h-screen snap-start bg-skin-primary-300"
+        className="h-screen snap-start bg-primary-300"
       ></div>
     </main>
   );

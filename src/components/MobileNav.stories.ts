@@ -22,6 +22,6 @@ export const Default: Story = {
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
     ],
-    backgroundColor: "skin-primary-500",
+    backgroundColor: "primary-500",
   },
 };

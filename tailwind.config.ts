@@ -33,69 +33,67 @@ const config: Config = {
         skin: "var(--border-radius)",
       },
       colors: {
-        skin: {
-          "primary-100": withOpacity("--color-primary-100")({
-            opacityValue: 1,
-          }),
-          "primary-100-contrast": withOpacity("--color-primary-100-contrast")({
-            opacityValue: 1,
-          }),
-          "primary-100-contrast-muted": withOpacity(
-            "--color-primary-100-contrast-muted"
-          )({
-            opacityValue: 1,
-          }),
-          "primary-300": withOpacity("--color-primary-300")({
-            opacityValue: 1,
-          }),
-          "primary-300-contrast": withOpacity("--color-primary-300-contrast")({
-            opacityValue: 1,
-          }),
-          "primary-300-contrast-muted": withOpacity(
-            "--color-primary-300-contrast-muted"
-          )({
-            opacityValue: 1,
-          }),
-          "primary-500": withOpacity("--color-primary-500")({
-            opacityValue: 1,
-          }),
-          "primary-500-contrast": withOpacity("--color-primary-500-contrast")({
-            opacityValue: 1,
-          }),
-          "primary-500-contrast-muted": withOpacity(
-            "--color-primary-500-contrast-muted"
-          )({
-            opacityValue: 1,
-          }),
-          "primary-700": withOpacity("--color-primary-700")({
-            opacityValue: 1,
-          }),
-          "primary-700-contrast": withOpacity("--color-primary-700-contrast")({
-            opacityValue: 1,
-          }),
-          "primary-700-contrast-muted": withOpacity(
-            "--color-primary-700-contrast-muted"
-          )({
-            opacityValue: 1,
-          }),
-          "primary-900": withOpacity("--color-primary-900")({
-            opacityValue: 1,
-          }),
-          "primary-900-contrast": withOpacity("--color-primary-900-contrast")({
-            opacityValue: 1,
-          }),
-          "primary-900-contrast-muted": withOpacity(
-            "--color-primary-900-contrast-muted"
-          )({
-            opacityValue: 1,
-          }),
-          background: withOpacity("--color-background")({
-            opacityValue: 1,
-          }),
-          "background-contrast": withOpacity("--color-background-contrast")({
-            opacityValue: 1,
-          }),
-        },
+        "primary-100": withOpacity("--color-primary-100")({
+          opacityValue: 1,
+        }),
+        "primary-100-contrast": withOpacity("--color-primary-100-contrast")({
+          opacityValue: 1,
+        }),
+        "primary-100-contrast-muted": withOpacity(
+          "--color-primary-100-contrast-muted",
+        )({
+          opacityValue: 1,
+        }),
+        "primary-300": withOpacity("--color-primary-300")({
+          opacityValue: 1,
+        }),
+        "primary-300-contrast": withOpacity("--color-primary-300-contrast")({
+          opacityValue: 1,
+        }),
+        "primary-300-contrast-muted": withOpacity(
+          "--color-primary-300-contrast-muted",
+        )({
+          opacityValue: 1,
+        }),
+        "primary-500": withOpacity("--color-primary-500")({
+          opacityValue: 1,
+        }),
+        "primary-500-contrast": withOpacity("--color-primary-500-contrast")({
+          opacityValue: 1,
+        }),
+        "primary-500-contrast-muted": withOpacity(
+          "--color-primary-500-contrast-muted",
+        )({
+          opacityValue: 1,
+        }),
+        "primary-700": withOpacity("--color-primary-700")({
+          opacityValue: 1,
+        }),
+        "primary-700-contrast": withOpacity("--color-primary-700-contrast")({
+          opacityValue: 1,
+        }),
+        "primary-700-contrast-muted": withOpacity(
+          "--color-primary-700-contrast-muted",
+        )({
+          opacityValue: 1,
+        }),
+        "primary-900": withOpacity("--color-primary-900")({
+          opacityValue: 1,
+        }),
+        "primary-900-contrast": withOpacity("--color-primary-900-contrast")({
+          opacityValue: 1,
+        }),
+        "primary-900-contrast-muted": withOpacity(
+          "--color-primary-900-contrast-muted",
+        )({
+          opacityValue: 1,
+        }),
+        background: withOpacity("--color-background")({
+          opacityValue: 1,
+        }),
+        "background-contrast": withOpacity("--color-background-contrast")({
+          opacityValue: 1,
+        }),
       },
       /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1400,18,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
       fontSize: {
@@ -119,11 +117,11 @@ const config: Config = {
       /* Make sure these classes are always available, right now the contrasting ones are used
       in the mobile nav, but they're not available because they're dynamically generated with JS */
       safelist: [
-        "bg-skin-primary-100-contrast",
-        "bg-skin-primary-300-contrast",
-        "bg-skin-primary-500-contrast",
-        "bg-skin-primary-700-contrast",
-        "bg-skin-primary-900-contrast",
+        "bg-primary-100-contrast",
+        "bg-primary-300-contrast",
+        "bg-primary-500-contrast",
+        "bg-primary-700-contrast",
+        "bg-primary-900-contrast",
       ],
       /* @link https://utopia.fyi/space/calculator?c=320,14,1.25,1400,24,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,&g=s,l,xl,12 */
       spacing: {

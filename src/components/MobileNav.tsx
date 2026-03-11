@@ -47,25 +47,25 @@ const MobileNav: React.FC<MobileNavProps> = ({
           >
             <div className="relative">
               <div
-                /* Trick tailwind JIT into generating the correct class names bg-skin-primary-100-contrast bg-skin-primary-300-contrast bg-skin-primary-500-contrast bg-skin-primary-700-contrast bg-skin-primary-900-contrast*/
+                /* Trick tailwind JIT into generating the correct class names bg-primary-100-contrast bg-primary-300-contrast bg-primary-500-contrast bg-primary-700-contrast bg-primary-900-contrast*/
                 className={
                   open
                     ? `absolute top-0 h-1 w-8 origin-center -translate-y-1/2 rotate-45 rounded-skin transition duration-500 bg-${backgroundColor}-contrast`
-                    : "mb-1.5 h-1 w-8 rounded-skin bg-skin-background-contrast transition duration-500"
+                    : "mb-1.5 h-1 w-8 rounded-skin bg-background-contrast transition duration-500"
                 }
               ></div>
               <div
                 className={
                   open
                     ? `h-1 w-8 rounded-skin transition duration-500 `
-                    : "mb-1.5 h-1 w-8 rounded-skin bg-skin-background-contrast transition duration-500"
+                    : "mb-1.5 h-1 w-8 rounded-skin bg-background-contrast transition duration-500"
                 }
               ></div>
               <div
                 className={
                   open
                     ? `absolute bottom-0 h-1 w-8 origin-center -translate-y-1/2 -rotate-45 rounded-skin transition duration-500 bg-${backgroundColor}-contrast`
-                    : "h-1 w-8 rounded-skin bg-skin-background-contrast transition duration-500"
+                    : "h-1 w-8 rounded-skin bg-background-contrast transition duration-500"
                 }
               ></div>
             </div>
@@ -81,7 +81,7 @@ const MobileNav: React.FC<MobileNavProps> = ({
                 leaveTo="opacity-0"
               >
                 <Popover.Overlay
-                  className={`fixed inset-0 bg-skin-primary-500 ${backgroundColor}`}
+                  className={`fixed inset-0 bg-primary-500 ${backgroundColor}`}
                 />
               </Transition.Child>
               <Popover.Panel className="fixed inset-0 grid place-items-center">
