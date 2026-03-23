@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory">
-      <div className="flex h-screen flex-col justify-between p-space-m-l snap-start">
+      <div className="flex h-screen flex-col justify-between p-fluid-m-l snap-start">
         <div className="inset-0 absolute -z-10 bg-background"></div>
         {theme === "gradient-theme" ? (
           <>
@@ -33,7 +33,7 @@ export default function Home() {
             { label: "Mobile Menu", href: "/#mobile-menu" },
           ]}
           backgroundColor="primary-500"
-          className="fixed top-space-m-l left-space-m-l"
+          className="fixed top-fluid-m-l left-fluid-m-l"
         />
         <motion.h1
           className="flex flex-col justify-center h-full"
@@ -72,12 +72,9 @@ export default function Home() {
           </motion.span>
         </motion.h1>
         <ThemeToggle />
-        <ModeToggle className="fixed top-space-m-l right-space-m-l" />
+        <ModeToggle className="fixed top-fluid-m-l right-fluid-m-l" />
       </div>
-      <div
-        id="buttons"
-        className="h-screen snap-start bg-primary-900"
-      ></div>
+      <div id="buttons" className="h-screen snap-start bg-primary-900"></div>
       <div
         id="mobile-menu"
         className="h-screen snap-start bg-primary-300"

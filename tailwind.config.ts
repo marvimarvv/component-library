@@ -114,52 +114,43 @@ const config: Config = {
         /* 48.83px → 79.97px */
         "fluid-3xl": "clamp(3.0519rem, 2.4752rem + 2.8833vw, 4.9981rem)",
       },
-      /* Make sure these classes are always available, right now the contrasting ones are used
-      in the mobile nav, but they're not available because they're dynamically generated with JS */
-      safelist: [
-        "bg-primary-100-contrast",
-        "bg-primary-300-contrast",
-        "bg-primary-500-contrast",
-        "bg-primary-700-contrast",
-        "bg-primary-900-contrast",
-      ],
       /* @link https://utopia.fyi/space/calculator?c=320,14,1.25,1400,24,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,&g=s,l,xl,12 */
       spacing: {
         /* Space 3xs: 4px → 6px */
-        "space-3xs": "clamp(0.25rem, 0.213rem + 0.1852vw, 0.375rem)",
+        "fluid-3xs": "clamp(0.25rem, 0.213rem + 0.1852vw, 0.375rem)",
         /* Space 2xs: 7px → 12px */
-        "space-2xs": "clamp(0.4375rem, 0.3449rem + 0.463vw, 0.75rem)",
+        "fluid-2xs": "clamp(0.4375rem, 0.3449rem + 0.463vw, 0.75rem)",
         /* Space xs: 11px → 18px */
-        "space-xs": "clamp(0.6875rem, 0.5579rem + 0.6481vw, 1.125rem)",
+        "fluid-xs": "clamp(0.6875rem, 0.5579rem + 0.6481vw, 1.125rem)",
         /* Space s: 14px → 24px */
-        "space-s": "clamp(0.875rem, 0.6898rem + 0.9259vw, 1.5rem)",
+        "fluid-s": "clamp(0.875rem, 0.6898rem + 0.9259vw, 1.5rem)",
         /* Space m: 21px → 36px */
-        "space-m": "clamp(1.3125rem, 1.0347rem + 1.3889vw, 2.25rem)",
+        "fluid-m": "clamp(1.3125rem, 1.0347rem + 1.3889vw, 2.25rem)",
         /* Space l: 28px → 48px */
-        "space-l": "clamp(1.75rem, 1.3796rem + 1.8519vw, 3rem)",
+        "fluid-l": "clamp(1.75rem, 1.3796rem + 1.8519vw, 3rem)",
         /* Space xl: 42px → 72px */
-        "space-xl": "clamp(2.625rem, 2.0694rem + 2.7778vw, 4.5rem)",
+        "fluid-xl": "clamp(2.625rem, 2.0694rem + 2.7778vw, 4.5rem)",
         /* Space 2xl: 56px → 96px */
-        "space-2xl": "clamp(3.5rem, 2.7593rem + 3.7037vw, 6rem)",
+        "fluid-2xl": "clamp(3.5rem, 2.7593rem + 3.7037vw, 6rem)",
         /* Space 3xl: 84px → 144px */
-        "space-3xl": "clamp(5.25rem, 4.1389rem + 5.5556vw, 9rem)",
+        "fluid-3xl": "clamp(5.25rem, 4.1389rem + 5.5556vw, 9rem)",
         /* One-up pairs */
         /* Space 3xs-2xs: 4px → 12px */
-        "space-3xs-2xs": "clamp(0.25rem, 0.1019rem + 0.7407vw, 0.75rem)",
+        "fluid-3xs-2xs": "clamp(0.25rem, 0.1019rem + 0.7407vw, 0.75rem)",
         /* Space 2xs-xs: 7px → 18px */
-        "space-2xs-xs": "clamp(0.4375rem, 0.2338rem + 1.0185vw, 1.125rem)",
+        "fluid-2xs-xs": "clamp(0.4375rem, 0.2338rem + 1.0185vw, 1.125rem)",
         /* Space xs-s: 11px → 24px */
-        "space-xs-s": "clamp(0.6875rem, 0.4468rem + 1.2037vw, 1.5rem)",
+        "fluid-xs-s": "clamp(0.6875rem, 0.4468rem + 1.2037vw, 1.5rem)",
         /* Space s-m: 14px → 36px */
-        "space-s-m": "clamp(0.875rem, 0.4676rem + 2.037vw, 2.25rem)",
+        "fluid-s-m": "clamp(0.875rem, 0.4676rem + 2.037vw, 2.25rem)",
         /* Space m-l: 21px → 48px */
-        "space-m-l": "clamp(1.3125rem, 0.8125rem + 2.5vw, 3rem)",
+        "fluid-m-l": "clamp(1.3125rem, 0.8125rem + 2.5vw, 3rem)",
         /* Space l-xl: 28px → 72px */
-        "space-l-xl": "clamp(1.75rem, 0.9352rem + 4.0741vw, 4.5rem)",
+        "fluid-l-xl": "clamp(1.75rem, 0.9352rem + 4.0741vw, 4.5rem)",
         /* Space xl-2xl: 42px → 96px */
-        "space-xl-2xl": "clamp(2.625rem, 1.625rem + 5vw, 6rem)",
+        "fluid-xl-2xl": "clamp(2.625rem, 1.625rem + 5vw, 6rem)",
         /* Space 2xl-3xl: 56px → 144px */
-        "space-2xl-3xl": "clamp(3.5rem, 1.8704rem + 8.1481vw, 9rem)",
+        "fluid-2xl-3xl": "clamp(3.5rem, 1.8704rem + 8.1481vw, 9rem)",
       },
     },
   },

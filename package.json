@@ -12,11 +12,13 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
+    "@material-design-icons/svg": "^0.14.15",
     "class-variance-authority": "^0.7.0",
     "framer-motion": "^12.25.0",
     "next": "16.1.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^10.1.11",
@@ -26,6 +28,7 @@
     "@storybook/nextjs": "^10.1.11",
     "@storybook/react": "^10.1.11",
     "@storybook/testing-library": "^0.2.2",
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^20",
     "@types/react": "19.2.7",

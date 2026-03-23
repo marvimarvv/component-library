@@ -21,9 +21,9 @@ const buttonStyles = cva(
         secondary: "",
       },
       size: {
-        small: "px-space-2xs py-space-3xs text-fluid-xs",
-        medium: "px-space-xs py-space-3xs text-fluid-s",
-        large: "px-space-s py-space-2xs text-fluid-m",
+        small: "px-fluid-2xs py-fluid-3xs text-fluid-xs",
+        medium: "px-fluid-xs py-fluid-3xs text-fluid-s",
+        large: "px-fluid-s py-fluid-2xs text-fluid-m",
       },
       fullWidth: {
         true: "w-full",
