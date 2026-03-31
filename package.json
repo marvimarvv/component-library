@@ -21,7 +21,6 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.15.9",
     "@storybook/addon-a11y": "^10.1.11",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/addon-links": "^10.1.11",
