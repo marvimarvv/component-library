@@ -1,16 +1,17 @@
 "use client";
 
-import MobileNav from "@/components/MobileNav";
 import ModeToggle from "@/components/ModeToggle";
 import ThemeToggle from "@/components/ThemeToggle";
 import { motion } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
+import Button from "@/components/Button";
+import { ButtonLink } from "@/components/ButtonLink";
 
 export default function Home() {
   const { theme } = useTheme() || ({} as { theme: string });
 
   return (
-    <main className="h-screen overflow-y-scroll snap-y snap-mandatory">
+    <main className="h-screen snap-y snap-mandatory">
       <div className="flex h-screen flex-col justify-between p-fluid-m-l snap-start">
         <div className="inset-0 absolute -z-10 bg-background"></div>
         {theme === "gradient-theme" ? (
@@ -26,59 +27,53 @@ export default function Home() {
         ) : (
           ""
         )}
-        <MobileNav
-          links={[
-            { label: "Start", href: "/" },
-            { label: "Buttons", href: "/#buttons" },
-            { label: "Mobile Menu", href: "/#mobile-menu" },
-          ]}
-          backgroundColor="primary-500"
-          className="fixed top-fluid-m-l left-fluid-m-l"
-        />
-        <motion.h1
-          className="flex flex-col justify-center h-full"
-          initial="inital"
-          animate="animate"
-          transition={{ staggerChildren: 0.5 }}
-        >
-          <motion.span
-            variants={{
-              inital: { opacity: 0, y: 100 },
-              animate: {
-                opacity: 1,
-
-                y: 0,
-                transition: { duration: 1 },
-              },
-            }}
-            className="text-fluid-3xl md:text-[170px] text-primary-500 leading-none"
+        <div className="flex flex-col justify-center h-full gap-fluid-l">
+          <motion.h1
+            initial="inital"
+            animate="animate"
+            transition={{ staggerChildren: 0.5 }}
           >
-            Welcome
-          </motion.span>
-          <motion.span
-            variants={{
-              inital: { opacity: 0, y: 100 },
-              animate: {
-                opacity: 1,
+            <motion.span
+              variants={{
+                inital: { opacity: 0, y: 100 },
+                animate: {
+                  opacity: 1,
 
-                y: 0,
-                originY: 0.5,
-                transition: { duration: 1 },
-              },
-            }}
-            className="text-fluid-l text-background-contrast"
-          >
-            to my component library
-          </motion.span>
-        </motion.h1>
+                  y: 0,
+                  transition: { duration: 1 },
+                },
+              }}
+              className="block text-fluid-3xl md:text-[170px] leading-none"
+            >
+              Welcome
+            </motion.span>
+            <motion.span
+              variants={{
+                inital: { opacity: 0, y: 100 },
+                animate: {
+                  opacity: 1,
+
+                  y: 0,
+                  originY: 0.5,
+                  transition: { duration: 1 },
+                },
+              }}
+              className="text-fluid-l text-background-contrast screen-md:pl-8"
+            >
+              to my component library
+            </motion.span>
+          </motion.h1>
+          <ButtonLink
+            href="https://..."
+            target="_blank"
+            intent="primary"
+            label="Go to Storybook"
+          />
+        </div>
+
         <ThemeToggle />
         <ModeToggle className="fixed top-fluid-m-l right-fluid-m-l" />
       </div>
-      <div id="buttons" className="h-screen snap-start bg-primary-900"></div>
-      <div
-        id="mobile-menu"
-        className="h-screen snap-start bg-primary-300"
-      ></div>
     </main>
   );
 }

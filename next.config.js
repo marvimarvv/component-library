@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
+  },
+
   webpack(config) {
     // Find Next.js's default rule that handles SVGs and exclude them from it
     const fileLoaderRule = config.module.rules.find((rule) =>

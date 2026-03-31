@@ -17,7 +17,7 @@ interface AccordionProps {
 const containerStyles =
   "gap-fluid-m grid grid-cols-1 max-w-md md:grid-cols-2 rounded-md w-full group";
 
-const accordionWrapperStyles = "w-full flex flex-col gap-fluid-s";
+const accordionWrapperStyles = "w-full flex flex-col gap-fluid-s min-w-[300px]";
 
 const accordionEntryStyles = cva(
   "group border border-primary-300 dark:border-primary-700 rounded-sm details-content:h-0 details-content:overflow-hidden open:details-content:h-auto details-content:transition-[height_150ms,content-visibility_150ms] details-content:transition-discrete w-full",
@@ -77,7 +77,7 @@ const accordionIconStyles = cva(
 );
 
 const accordionDetailsStyles = cva(
-  "px-fluid-s pb-fluid-s opacity-0 group-open:opacity-100 starting:group-open:opacity-0 transition-opacity duration-300",
+  "pl-[calc(30px + var(--spacing-fluid-s))] pr-fluid-s pb-fluid-s opacity-0 group-open:opacity-100 starting:group-open:opacity-0 transition-opacity duration-300",
   {
     variants: {
       theme: {

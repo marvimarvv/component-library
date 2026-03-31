@@ -12,8 +12,8 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const buttonStyles = cva(
-  "pointer-cursor rounded-skin font-bold visited:no-underline focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:focus-visible:outline-primary-100 ",
+export const buttonStyles = cva(
+  "w-fit pointer-cursor rounded-skin font-bold visited:no-underline focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:focus-visible:outline-primary-100 ",
   {
     variants: {
       intent: {
