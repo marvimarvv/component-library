@@ -64,7 +64,7 @@ export default function Home() {
             </motion.span>
           </motion.h1>
           <ButtonLink
-            href="https://..."
+            href="https://storybook-marvimarvv.netlify.app/"
             target="_blank"
             intent="primary"
             label="Go to Storybook"
