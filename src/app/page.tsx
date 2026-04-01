@@ -40,7 +40,7 @@ export default function Home() {
                   opacity: 1,
 
                   y: 0,
-                  transition: { duration: 1 },
+                  transition: { duration: 0.6 },
                 },
               }}
               className="block text-fluid-3xl md:text-[170px] leading-none"
@@ -55,7 +55,7 @@ export default function Home() {
 
                   y: 0,
                   originY: 0.5,
-                  transition: { duration: 1 },
+                  transition: { duration: 0.6 },
                 },
               }}
               className="text-fluid-l text-background-contrast screen-md:pl-8"
@@ -63,12 +63,18 @@ export default function Home() {
               to my component library
             </motion.span>
           </motion.h1>
-          <ButtonLink
-            href="https://storybook-marvimarvv.netlify.app/"
-            target="_blank"
-            intent="primary"
-            label="Go to Storybook"
-          />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1 }}
+          >
+            <ButtonLink
+              href="https://storybook-marvimarvv.netlify.app/"
+              target="_blank"
+              intent="primary"
+              label="Go to Storybook"
+            />
+          </motion.div>
         </div>
 
         <ThemeToggle />
