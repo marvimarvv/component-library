@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import ModeToggle from "./ModeToggle";
+import ModeSwitch from "./ModeSwitch";
 
 const meta = {
-  title: "Components/ModeToggle",
-  component: ModeToggle,
+  title: "Components/Mode Switch",
+  component: ModeSwitch,
   parameters: {
     layout: "centered",
   },
@@ -11,7 +11,7 @@ const meta = {
   argTypes: {
     className: { control: "text" },
   },
-} satisfies Meta<typeof ModeToggle>;
+} satisfies Meta<typeof ModeSwitch>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

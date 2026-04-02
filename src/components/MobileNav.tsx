@@ -1,7 +1,8 @@
-import { Popover, Transition } from "@headlessui/react";
+"use client";
 
+import { cva } from "class-variance-authority";
 import Link from "next/link";
-import { MutableRefObject } from "react";
+import { useRef, useState } from "react";
 
 interface LinkProps {
   href: string;
@@ -10,109 +11,161 @@ interface LinkProps {
 
 interface MobileNavProps {
   className?: string;
-  pageContent?: MutableRefObject<HTMLElement | null>;
   links: LinkProps[];
-  backgroundColor?: string;
+  backgroundColor?:
+    | "primary-100"
+    | "primary-300"
+    | "primary-500"
+    | "primary-700"
+    | "primary-900";
 }
+
+const dialogStyles = cva(
+  "fixed inset-0 z-10 m-0 max-h-none max-w-none border-0 bg-transparent p-0",
+  {
+    variants: {
+      state: {
+        open: "animate-mobile-nav-enter",
+        closing: "animate-mobile-nav-exit",
+      },
+    },
+  },
+);
+
+const overlayStyles = cva("fixed inset-0", {
+  variants: {
+    backgroundColor: {
+      "primary-100": "bg-primary-100",
+      "primary-300": "bg-primary-300",
+      "primary-500": "bg-primary-500",
+      "primary-700": "bg-primary-700",
+      "primary-900": "bg-primary-900",
+    },
+  },
+  defaultVariants: {
+    backgroundColor: "primary-500",
+  },
+});
+
+const closeBarsStyles = cva("absolute h-1 w-8 origin-center rounded-skin", {
+  variants: {
+    backgroundColor: {
+      "primary-100": "bg-primary-100-contrast",
+      "primary-300": "bg-primary-300-contrast",
+      "primary-500": "bg-primary-500-contrast",
+      "primary-700": "bg-primary-700-contrast",
+      "primary-900": "bg-primary-900-contrast",
+    },
+  },
+  defaultVariants: {
+    backgroundColor: "primary-500",
+  },
+});
+
+const linkStyles = cva("grow text-center text-fluid-xl", {
+  variants: {
+    backgroundColor: {
+      "primary-100": "text-primary-100-contrast",
+      "primary-300": "text-primary-300-contrast",
+      "primary-500": "text-primary-500-contrast",
+      "primary-700": "text-primary-700-contrast",
+      "primary-900": "text-primary-900-contrast",
+    },
+    state: {
+      open: "animate-mobile-nav-link-enter",
+      closing: "animate-mobile-nav-link-exit",
+    },
+  },
+  defaultVariants: {
+    backgroundColor: "primary-500",
+  },
+});
 
 const MobileNav: React.FC<MobileNavProps> = ({
   className,
-  pageContent,
   links,
   backgroundColor,
 }) => {
-  const hidePageContent = () => {
-    const isOpen = pageContent?.current?.style.overflow === "hidden";
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [isClosing, setIsClosing] = useState(false);
 
-    if (isOpen) {
-      pageContent.current!.style.overflow = "auto";
-      pageContent.current!.style.height = "unset";
-    } else {
-      if (pageContent?.current) {
-        pageContent.current.style.overflow = "hidden";
-        pageContent.current!.style.height = "100vh";
-      }
+  const open = () => {
+    dialogRef.current?.showModal();
+  };
+
+  const close = () => {
+    setIsClosing(true);
+  };
+
+  const handleAnimationEnd = (e: React.AnimationEvent<HTMLDialogElement>) => {
+    if (isClosing && e.animationName === "mobile-nav-exit") {
+      dialogRef.current?.close();
+      setIsClosing(false);
     }
   };
 
+  const dialogState = isClosing ? "closing" : "open";
+
   return (
-    <Popover className={className}>
-      {({ open }) => (
-        <>
-          <Popover.Button
-            className="relative z-20 text-fluid-xl focus:outline-hidden focus-visible:outline-solid aspect-square"
-            onClick={() => {
-              hidePageContent();
-            }}
-          >
-            <div className="relative">
-              <div
-                /* Trick tailwind JIT into generating the correct class names bg-primary-100-contrast bg-primary-300-contrast bg-primary-500-contrast bg-primary-700-contrast bg-primary-900-contrast*/
-                className={
-                  open
-                    ? `absolute top-0 h-1 w-8 origin-center -translate-y-1/2 rotate-45 rounded-skin transition duration-500 bg-${backgroundColor}-contrast`
-                    : "mb-1.5 h-1 w-8 rounded-skin bg-background-contrast transition duration-500"
-                }
-              ></div>
-              <div
-                className={
-                  open
-                    ? `h-1 w-8 rounded-skin transition duration-500 `
-                    : "mb-1.5 h-1 w-8 rounded-skin bg-background-contrast transition duration-500"
-                }
-              ></div>
-              <div
-                className={
-                  open
-                    ? `absolute bottom-0 h-1 w-8 origin-center -translate-y-1/2 -rotate-45 rounded-skin transition duration-500 bg-${backgroundColor}-contrast`
-                    : "h-1 w-8 rounded-skin bg-background-contrast transition duration-500"
-                }
-              ></div>
-            </div>
-          </Popover.Button>
-          <Transition show={open}>
-            <div className="fixed inset-0 grid place-items-center z-10">
-              <Transition.Child
-                enter="transition duration-500 ease"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition duration-500 ease"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
+    <>
+      <button
+        className={`${className} relative z-20 aspect-square text-fluid-xl focus:outline-hidden focus-visible:outline-solid`}
+        onClick={open}
+        aria-haspopup="dialog"
+        aria-label="Open navigation"
+      >
+        <div className="relative">
+          <div className="mb-1.5 h-1 w-8 rounded-skin bg-background-contrast" />
+          <div className="mb-1.5 h-1 w-8 rounded-skin bg-background-contrast" />
+          <div className="h-1 w-8 rounded-skin bg-background-contrast" />
+        </div>
+      </button>
+
+      <dialog
+        ref={dialogRef}
+        className={dialogStyles({ state: dialogState })}
+        onClose={() => setIsClosing(false)}
+        onAnimationEnd={handleAnimationEnd}
+        aria-label="Navigation"
+      >
+        <div
+          aria-hidden="true"
+          className={overlayStyles({ backgroundColor })}
+        />
+
+        <button
+          className="absolute right-6 top-6 z-20 aspect-square text-fluid-xl focus:outline-hidden focus-visible:outline-solid"
+          onClick={close}
+          aria-label="Close navigation"
+        >
+          <div className="relative">
+            <div
+              className={`${closeBarsStyles({ backgroundColor })} top-0 -translate-y-1/2 rotate-45`}
+            />
+            <div className="h-1 w-8" />
+            <div
+              className={`${closeBarsStyles({ backgroundColor })} bottom-0 -translate-y-1/2 -rotate-45`}
+            />
+          </div>
+        </button>
+
+        <nav className="fixed inset-0 grid place-items-center">
+          <div className="flex flex-col items-center justify-center gap-4">
+            {links.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                onClick={close}
+                className={linkStyles({ backgroundColor, state: dialogState })}
+                style={{ animationDelay: `${index * 75}ms` }}
               >
-                <Popover.Overlay
-                  className={`fixed inset-0 bg-primary-500 ${backgroundColor}`}
-                />
-              </Transition.Child>
-              <Popover.Panel className="fixed inset-0 grid place-items-center">
-                <nav className="flex flex-col items-center justify-center gap-4">
-                  {links.map((link, index) => (
-                    <span key={index}>
-                      <Transition.Child
-                        enter="transition transform duration-500 ease delay-100"
-                        enterFrom="scale-50 opacity-0 -translate-x-80"
-                        enterTo="scale-100 opacity-100 translate-x-0"
-                        leave="transition transform duration-500 ease"
-                        leaveFrom="scale-100 opacity-100 translate-x-0"
-                        leaveTo="scale-0 opacity-0 -translate-x-80"
-                      >
-                        <Popover.Button
-                          as={Link}
-                          className={`grow text-center text-fluid-xl text-${backgroundColor}-contrast`}
-                          href={link.href}
-                        >
-                          {link.label}
-                        </Popover.Button>
-                      </Transition.Child>
-                    </span>
-                  ))}
-                </nav>
-              </Popover.Panel>
-            </div>
-          </Transition>
-        </>
-      )}
-    </Popover>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </nav>
+      </dialog>
+    </>
   );
 };
 

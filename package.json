@@ -11,7 +11,6 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.9",
     "@material-design-icons/svg": "^0.14.15",
     "class-variance-authority": "^0.7.0",
     "framer-motion": "^12.25.0",

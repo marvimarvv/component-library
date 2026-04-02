@@ -3,6 +3,8 @@
 @config "../../tailwind.config.ts";
 
 @source inline("bg-primary-{100,300,500,700,900}-contrast");
+@source inline("bg-primary-{100,300,500,700,900}");
+@source inline("text-primary-{100,300,500,700,900}-contrast");
 @source inline("group-has-[details:nth-child({1,2,3,4,5,6})[open]]:{opacity-100,scale-100}");
 
 @layer base {
@@ -109,6 +111,59 @@
     }
 
     --border-radius: 0rem;
+  }
+}
+
+@theme {
+  --animate-mobile-nav-enter: mobile-nav-enter 0.5s ease both;
+  --animate-mobile-nav-exit: mobile-nav-exit 0.5s ease both;
+  --animate-mobile-nav-link-enter: mobile-nav-link-enter 0.5s ease 0.1s both;
+  --animate-mobile-nav-link-exit: mobile-nav-link-exit 0.5s ease both;
+
+  @keyframes mobile-nav-enter {
+    from {
+      opacity: 0;
+      display: block;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes mobile-nav-exit {
+    from {
+      opacity: 1;
+      display: block;
+    }
+    to {
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  @keyframes mobile-nav-link-enter {
+    from {
+      opacity: 0;
+      transform: scale(0.5) translateX(-20rem);
+      display: block;
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateX(0);
+    }
+  }
+
+  @keyframes mobile-nav-link-exit {
+    from {
+      opacity: 1;
+      transform: scale(1) translateX(0);
+      display: block;
+    }
+    to {
+      opacity: 0;
+      transform: scale(0) translateX(-20rem);
+      display: none;
+    }
   }
 }
 

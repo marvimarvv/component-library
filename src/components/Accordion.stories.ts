@@ -61,7 +61,7 @@ export const OnlyOneItemOpenAtATime: Story = {
   },
 };
 
-export const OnlyOneItemOpenWithImages: Story = {
+/* export const OnlyOneItemOpenWithImages: Story = {
   args: {
     onlyOneItemOpen: true,
     accordionEntries: [
@@ -74,4 +74,4 @@ export const OnlyOneItemOpenWithImages: Story = {
       fallbackImage: testingImg.src,
     },
   },
-};
+}; */

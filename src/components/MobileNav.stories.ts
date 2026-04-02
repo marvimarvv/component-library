@@ -20,8 +20,28 @@ export const Default: Story = {
     links: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
+      { label: "Services", href: "/services" },
+      { label: "Portfolio", href: "/portfolio" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
     ],
     backgroundColor: "primary-500",
+  },
+};
+
+export const WithManyLinks: Story = {
+  args: {
+    links: [
+      { label: "Home", href: "/" },
+      { label: "About", href: "/about" },
+      { label: "Services", href: "/services" },
+      { label: "Portfolio", href: "/portfolio" },
+      { label: "Case Studies", href: "/case-studies" },
+      { label: "Blog", href: "/blog" },
+      { label: "Careers", href: "/careers" },
+      { label: "Press", href: "/press" },
+      { label: "Contact", href: "/contact" },
+    ],
+    backgroundColor: "primary-700",
   },
 };

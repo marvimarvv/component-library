@@ -1,10 +1,9 @@
 "use client";
 
-import ModeToggle from "@/components/ModeToggle";
+import ModeToggle from "@/components/ModeSwitch";
 import ThemeToggle from "@/components/ThemeToggle";
 import { motion } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
-import Button from "@/components/Button";
 import { ButtonLink } from "@/components/ButtonLink";
 
 export default function Home() {
