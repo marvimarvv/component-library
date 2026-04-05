@@ -60,7 +60,7 @@
   .gradient-theme {
     --color-primary-100: 250, 67%, 90%;
     --color-primary-100-contrast: 0, 0%, 15%;
-    --color-primary-100-contrast-muted: 0, 0%, 46%;
+    --color-primary-100-contrast-muted: 0, 0%, 37%;
     --color-primary-300: 250, 67%, 70%;
     --color-primary-300-contrast: 0, 0%, 15%;
     --color-primary-300-contrast-muted: 0, 0%, 46%;
@@ -82,12 +82,12 @@
       --color-background-contrast: 0, 0%, 100%;
     }
 
-    --border-radius: 999rem;
+    --border-radius: 1rem;
   }
 
   .neon-theme {
     --color-primary-100: 110, 80%, 90%;
-    --color-primary-100-contrast: 0, 0%, 15%;
+    --color-primary-100-contrast: 0, 0%, 0%;
     --color-primary-100-contrast-muted: 0, 0%, 42%;
     --color-primary-300: 110, 67%, 70%;
     --color-primary-300-contrast: 0, 0%, 0%;
@@ -96,7 +96,7 @@
     --color-primary-500-contrast: 0, 0%, 0%;
     --color-primary-500-contrast-muted: 0, 0%, 42%;
     --color-primary-700: 110, 67%, 30%;
-    --color-primary-700-contrast: 0, 0%, 0%;
+    --color-primary-700-contrast: 0, 0%, 100%;
     --color-primary-700-contrast-muted: 0, 0%, 65%;
     --color-primary-900: 110, 80%, 10%;
     --color-primary-900-contrast: 0, 0%, 100%;

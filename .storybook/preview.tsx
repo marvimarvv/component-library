@@ -2,15 +2,18 @@ import "../src/app/globals.css";
 
 import type { Decorator, StoryContext } from "@storybook/react";
 
+import { DotGothic16, Figtree } from "next/font/google";
 import type { Preview } from "@storybook/nextjs";
 import { ThemeProvider } from "../src/components/ThemeProvider";
 import { useEffect } from "react";
+
+const dotGothic16 = DotGothic16({ weight: "400", subsets: ["latin"] });
+const figtree = Figtree({ weight: "variable", subsets: ["latin"] });
 
 export const globalTypes = {
   theme: {
     name: "Theme",
     description: "Global theme for components",
-    defaultValue: "gradient light",
     toolbar: {
       icon: "paintbrush",
       // Array of item IDs to display in the toolbar, and order of appearance.
@@ -55,9 +58,13 @@ const withThemeContext: Decorator = (Story, context: StoryContext) => {
     window.dispatchEvent(event);
   }, [theme]);
 
+  const fontClass = theme?.startsWith("gradient")
+    ? figtree.className
+    : dotGothic16.className;
+
   return (
     <ThemeProvider>
-      <div className={themeClass} style={{ padding: "3rem" }}>
+      <div className={`${themeClass} ${fontClass}`} style={{ padding: "3rem" }}>
         <Story />
       </div>
     </ThemeProvider>
@@ -65,10 +72,13 @@ const withThemeContext: Decorator = (Story, context: StoryContext) => {
 };
 
 const preview: Preview = {
+  initialGlobals: {
+    theme: "gradient light",
+  },
   decorators: [withThemeContext],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
-    backgrounds: { disabled: true },
+    backgrounds: { disable: true },
     controls: {
       matchers: {
         color: /(background|color)$/i,

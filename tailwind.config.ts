@@ -30,7 +30,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       borderRadius: {
-        skin: "var(--border-radius)",
+        theme: "var(--border-radius)",
       },
       colors: {
         "primary-100": withOpacity("--color-primary-100")({

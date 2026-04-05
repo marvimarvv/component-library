@@ -50,9 +50,9 @@ export const ManyItems: Story = {
   },
 };
 
-export const OnlyOneItemOpenAtATime: Story = {
+export const OneItemOpen: Story = {
   args: {
-    onlyOneItemOpen: true,
+    oneItemOpen: true,
     accordionEntries: [
       { details: "First item details", summary: "First Item" },
       { details: "Second item details", summary: "Second Item" },

@@ -8,7 +8,7 @@ import { useTheme } from "./ThemeProvider";
 import Icon from "./Icon";
 
 const switchBgStyles = cva(
-  "relative inline-flex h-fluid-l w-fluid-2xl shrink-0 cursor-pointer rounded-skin transition-colors duration-200 ease outline-2 outline-slate-500 peer-focus-visible:outline",
+  "relative inline-flex h-fluid-l w-fluid-2xl shrink-0 cursor-pointer transition-colors duration-200 ease outline-2 outline-slate-500 peer-focus-visible:outline",
   {
     variants: {
       isDark: {
@@ -16,7 +16,7 @@ const switchBgStyles = cva(
         false: "bg-primary-300",
       },
       theme: {
-        "gradient-theme": "",
+        "gradient-theme": "rounded-full",
         "neon-theme": "",
       },
     },
@@ -24,7 +24,7 @@ const switchBgStyles = cva(
 );
 
 const switchThumbStyles = cva(
-  "pointer-events-none inline-flex items-center justify-center relative h-full aspect-square transform rounded-skin bg-white dark:bg-slate-700 shadow-lg ring-0 transition duration-200 ease overflow-hidden",
+  "pointer-events-none inline-flex items-center justify-center relative h-full aspect-square transform bg-white dark:bg-slate-700 shadow-lg ring-0 transition duration-200 ease overflow-hidden",
   {
     variants: {
       isDark: {
@@ -32,7 +32,7 @@ const switchThumbStyles = cva(
         false: "translate-x-full",
       },
       theme: {
-        "gradient-theme": "",
+        "gradient-theme": "rounded-full",
         "neon-theme": "",
       },
     },

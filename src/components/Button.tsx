@@ -13,7 +13,7 @@ interface ButtonProps {
 }
 
 export const buttonStyles = cva(
-  "w-fit pointer-cursor rounded-skin font-bold visited:no-underline focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:focus-visible:outline-primary-100 ",
+  "w-fit pointer-cursor rounded-full font-bold visited:no-underline focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:focus-visible:outline-primary-100 ",
   {
     variants: {
       intent: {
@@ -40,7 +40,7 @@ export const buttonStyles = cva(
         intent: "secondary",
         theme: "gradient-theme",
         class:
-          "relative text-transparent dark:text-transparent after bg-clip-text before:bg-linear-to-br before:from-primary-300 before:via-primary-700 before:to-primary-300 before:absolute before:inset-0 before:rounded-skin before:-z-20 after:absolute after:inset-[0.18rem] after:bg-background after:-z-10 after:rounded-skin dark:before:from-primary-100 dark:before:via-primary-300 dark:before:to-primary-100",
+          "relative text-transparent dark:text-transparent after bg-clip-text before:bg-linear-to-br before:from-primary-300 before:via-primary-700 before:to-primary-300 before:absolute before:inset-0 before:rounded-full before:-z-20 after:absolute after:inset-[0.18rem] after:bg-background after:-z-10 after:rounded-full dark:before:from-primary-100 dark:before:via-primary-300 dark:before:to-primary-100",
       },
       {
         intent: "secondary",

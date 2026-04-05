@@ -159,7 +159,7 @@ export const Large: Story = {
   },
 };
 
-export const AllIcons: Story = {
+export const IconSelection: Story = {
   args: {
     icon: "home",
     size: "2rem",

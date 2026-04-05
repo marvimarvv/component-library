@@ -7,7 +7,7 @@ import { useTheme } from "./ThemeProvider";
 
 interface AccordionProps {
   accordionEntries: { details: string; summary: string }[];
-  onlyOneItemOpen?: boolean;
+  oneItemOpen?: boolean;
   withImages?: {
     images: string[];
     fallbackImage?: string;
@@ -15,17 +15,17 @@ interface AccordionProps {
 }
 
 const containerStyles =
-  "gap-fluid-m grid grid-cols-1 max-w-md md:grid-cols-2 rounded-md w-full group";
+  "gap-fluid-m grid grid-cols-1 max-w-md md:grid-cols-2 w-full group";
 
 const accordionWrapperStyles = "w-full flex flex-col gap-fluid-s min-w-[300px]";
 
 const accordionEntryStyles = cva(
-  "group border border-primary-300 dark:border-primary-700 rounded-sm details-content:h-0 details-content:overflow-hidden open:details-content:h-auto details-content:transition-[height_150ms,content-visibility_150ms] details-content:transition-discrete w-full",
+  "group rounded-theme details-content:h-0 details-content:overflow-hidden open:details-content:h-auto details-content:transition-[height_150ms,content-visibility_150ms] details-content:transition-discrete w-full",
   {
     variants: {
       theme: {
-        "gradient-theme": ``,
-        "neon-theme": ``,
+        "gradient-theme": `bg-radial-[at_70%] from-primary-100 to-primary-300 dark:from-primary-500 dark:to-primary-700`,
+        "neon-theme": `border-4 open:border-primary-300 open:dark:border-primary-700`,
       },
     },
     defaultVariants: {
@@ -35,7 +35,7 @@ const accordionEntryStyles = cva(
 );
 
 const accordionSummaryStyles = cva(
-  "cursor-pointer list-none px-fluid-s py-fluid-xs flex items-center gap-2",
+  "cursor-pointer list-none px-fluid-s py-fluid-xs flex items-start gap-2",
   {
     variants: {
       theme: {
@@ -92,7 +92,7 @@ const accordionDetailsStyles = cva(
 );
 
 const accordionImageStyles = cva(
-  "h-30 rounded-skin w-full relative overflow-hidden aspect-square",
+  "h-30 rounded-theme w-full relative overflow-hidden aspect-square",
   {
     variants: {
       theme: {
@@ -107,13 +107,13 @@ const accordionImageStyles = cva(
 );
 
 const accordionImageItemStyles =
-  "object-cover rounded-skin h-full w-full transition-[opacity,transform] duration-300 absolute inset-0 opacity-0 scale-110";
+  "object-cover rounded-theme h-full w-full transition-[opacity,transform] duration-300 absolute inset-0 opacity-0 scale-110";
 
 const accordionFallbackImageStyles = `${accordionImageItemStyles} group-[&:not(:has(details[open]))]:opacity-100 group-[&:not(:has(details[open]))]:scale-100`;
 
 export const Accordion = ({
   accordionEntries,
-  onlyOneItemOpen,
+  oneItemOpen,
   withImages,
 }: AccordionProps) => {
   const { theme } = useTheme() as unknown as {
@@ -130,7 +130,7 @@ export const Accordion = ({
         {accordionEntries.map(({ details, summary }, index) => (
           <details
             key={index}
-            {...(onlyOneItemOpen && { name: "accordion-item" })}
+            {...(oneItemOpen && { name: "accordion-item" })}
             className={accordionEntryStyles({ theme })}
           >
             <summary className={accordionSummaryStyles({ theme })}>
@@ -148,7 +148,7 @@ export const Accordion = ({
           </details>
         ))}
       </div>
-      {onlyOneItemOpen && withImages && (
+      {oneItemOpen && withImages && (
         <div className={accordionImageStyles({ theme })}>
           {withImages.images.map((src, index) => (
             <img
