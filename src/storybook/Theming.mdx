@@ -1,3 +1,38 @@
+export const Swatch = ({ color }) => (
+  <span
+    style={{
+      display: "inline-block",
+      width: "1.25rem",
+      height: "1.25rem",
+      backgroundColor: `hsl(${color})`,
+      borderRadius: "4px",
+      border: "1px solid rgba(0,0,0,0.12)",
+      verticalAlign: "middle",
+      marginRight: "0.35rem",
+    }}
+  />
+);
+
+export const ContrastBadge = ({ ratio }) => (
+  <span
+    style={{
+      display: "inline-block",
+      padding: "0.08rem 0.5rem",
+      backgroundColor:
+        ratio >= 7 ? "hsl(120, 100%, 10%)" : "hsl(120, 100%, 80%)",
+      color: ratio >= 7 ? "hsl(120, 100%, 90%)" : "hsl(120, 100%, 15%)",
+      borderRadius: "9999px",
+      fontSize: "0.75rem",
+      fontWeight: "bold",
+    }}
+  >
+    <span style={{ fontSize: "0.75rem", marginRight: "0.25rem" }}>
+      {ratio >= 7 ? "AAA" : "AA"}
+    </span>
+    {ratio}
+  </span>
+);
+
 # Theming
 
 All themes are implemented as CSS custom properties (design tokens). Switching themes is as simple as
@@ -88,21 +123,6 @@ giving all components softly rounded corners.
 
 ### Primary Color Palette
 
-export const Swatch = ({ color }) => (
-  <span
-    style={{
-      display: "inline-block",
-      width: "1.25rem",
-      height: "1.25rem",
-      backgroundColor: `hsl(${color})`,
-      borderRadius: "4px",
-      border: "1px solid rgba(0,0,0,0.12)",
-      verticalAlign: "middle",
-      marginRight: "0.35rem",
-    }}
-  />
-);
-
 <table>
   <thead>
     <tr>
@@ -186,6 +206,7 @@ Each primary level ships with a full-contrast foreground (`-contrast`) that ensu
       <th>Level</th>
       <th>Contrast token</th>
       <th>Value</th>
+      <th>WCAG contrast ratio</th>
     </tr>
   </thead>
   <tbody>
@@ -195,10 +216,12 @@ Each primary level ships with a full-contrast foreground (`-contrast`) that ensu
         <code>--color-primary-100-contrast</code>
       </td>
       <td>
-      <Swatch color="0, 0%, 15%" />
-
+        <Swatch color="0, 0%, 15%" />
         <code>hsl(0, 0%, 15%)</code>
-        </td>
+      </td>
+      <td>
+        <ContrastBadge ratio={14.74} />
+      </td>
     </tr>
     <tr>
       <td>300</td>
@@ -206,10 +229,12 @@ Each primary level ships with a full-contrast foreground (`-contrast`) that ensu
         <code>--color-primary-300-contrast</code>
       </td>
       <td>
-      <Swatch color="0, 0%, 15%" />
-
+        <Swatch color="0, 0%, 15%" />
         <code>hsl(0, 0%, 15%)</code>
-        </td>
+      </td>
+      <td>
+        <ContrastBadge ratio={6.36} />
+      </td>
     </tr>
     <tr>
       <td>500</td>
@@ -217,8 +242,11 @@ Each primary level ships with a full-contrast foreground (`-contrast`) that ensu
         <code>--color-primary-500-contrast</code>
       </td>
       <td>
-      <Swatch color="0, 0%, 100%" />
+        <Swatch color="0, 0%, 100%" />
         <code>hsl(0, 0%, 100%)</code>
+      </td>
+      <td>
+        <ContrastBadge ratio={8.2} />
       </td>
     </tr>
     <tr>
@@ -227,8 +255,11 @@ Each primary level ships with a full-contrast foreground (`-contrast`) that ensu
         <code>--color-primary-700-contrast</code>
       </td>
       <td>
-      <Swatch color="0, 0%, 100%" />
+        <Swatch color="0, 0%, 100%" />
         <code>hsl(0, 0%, 100%)</code>
+      </td>
+      <td>
+        <ContrastBadge ratio={13.56} />
       </td>
     </tr>
     <tr>
@@ -237,11 +268,13 @@ Each primary level ships with a full-contrast foreground (`-contrast`) that ensu
         <code>--color-primary-900-contrast</code>
       </td>
       <td>
-      <Swatch color="0, 0%, 100%" />
+        <Swatch color="0, 0%, 100%" />
         <code>hsl(0, 0%, 100%)</code>
       </td>
+      <td>
+        <ContrastBadge ratio={19.3} />
+      </td>
     </tr>
-
   </tbody>
 </table>
 
@@ -419,6 +452,7 @@ text, keeping knock-out legibility a priority.
       <th>Level</th>
       <th>Contrast token</th>
       <th>Value</th>
+      <th>WCAG contrast ratio</th>
     </tr>
   </thead>
   <tbody>
@@ -431,6 +465,9 @@ text, keeping knock-out legibility a priority.
         <Swatch color="0, 0%, 0%" />
         <code>hsl(0, 0%, 0%)</code>
       </td>
+      <td>
+        <ContrastBadge ratio={18.51} />
+      </td>
     </tr>
     <tr>
       <td>300</td>
@@ -440,6 +477,9 @@ text, keeping knock-out legibility a priority.
       <td>
         <Swatch color="0, 0%, 0%" />
         <code>hsl(0, 0%, 0%)</code>
+      </td>
+      <td>
+        <ContrastBadge ratio={13.81} />
       </td>
     </tr>
     <tr>
@@ -451,6 +491,9 @@ text, keeping knock-out legibility a priority.
         <Swatch color="0, 0%, 0%" />
         <code>hsl(0, 0%, 0%)</code>
       </td>
+      <td>
+        <ContrastBadge ratio={12.52} />
+      </td>
     </tr>
     <tr>
       <td>700</td>
@@ -461,6 +504,9 @@ text, keeping knock-out legibility a priority.
         <Swatch color="0, 0%, 100%" />
         <code>hsl(0, 0%, 100%)</code>
       </td>
+      <td>
+        <ContrastBadge ratio={5} />
+      </td>
     </tr>
     <tr>
       <td>900</td>
@@ -470,6 +516,9 @@ text, keeping knock-out legibility a priority.
       <td>
         <Swatch color="0, 0%, 100%" />
         <code>hsl(0, 0%, 100%)</code>
+      </td>
+      <td>
+        <ContrastBadge ratio={14.91} />
       </td>
     </tr>
   </tbody>

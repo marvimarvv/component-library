@@ -3,6 +3,7 @@ import RemoveIconFilled from "@material-design-icons/svg/filled/remove.svg";
 import AddIconRound from "@material-design-icons/svg/round/add.svg";
 import RemoveIconRound from "@material-design-icons/svg/round/remove.svg";
 import { cva } from "class-variance-authority";
+import Icon from "./Icon";
 import { useTheme } from "./ThemeProvider";
 
 type AccordionProps = {
@@ -10,23 +11,25 @@ type AccordionProps = {
 } & (
   | { withImages?: never; oneItemOpen?: boolean }
   | {
-      withImages: { images: string[]; fallbackImage?: string };
+      withImages: { images: string[] };
       oneItemOpen: true;
     }
 );
 
 const containerStyles =
-  "gap-fluid-m grid grid-cols-1 max-w-md md:grid-cols-2 w-full group";
+  "gap-fluid-m grid grid-cols-1 md:grid-cols-2 w-full group";
 
 const accordionWrapperStyles = "w-full flex flex-col gap-fluid-s min-w-[300px]";
 
 const accordionEntryStyles = cva(
-  "group rounded-theme details-content:h-0 details-content:overflow-hidden open:details-content:h-auto details-content:transition-[height_150ms,content-visibility_150ms] details-content:transition-discrete w-full",
+  "group rounded-theme details-content:h-0 details-content:overflow-hidden open:details-content:h-auto details-content:transition-[height_150ms,content-visibility_150ms] details-content:transition-discrete w-full text-fluid-s [--icon-size:1lh]",
   {
     variants: {
       theme: {
-        "gradient-theme": `bg-radial-[at_70%] from-primary-100 to-primary-300 dark:from-primary-500 dark:to-primary-700`,
-        "neon-theme": `border-4 open:border-primary-300 open:dark:border-primary-700`,
+        "gradient-theme":
+          "bg-radial-[at_50%_0%] from-primary-100 to-background dark:from-primary-900 open:bg-radial-[at_30%_0%] text-background-contrast transition-colors duration-300 border border-primary-100 dark:border-primary-900 open:border-primary-500 open:dark:border-primary-700",
+        "neon-theme":
+          "border-4 open:border-primary-300 open:dark:border-primary-700",
       },
     },
     defaultVariants: {
@@ -36,7 +39,7 @@ const accordionEntryStyles = cva(
 );
 
 const accordionSummaryStyles = cva(
-  "cursor-pointer list-none px-fluid-s py-fluid-xs flex items-start gap-2",
+  "cursor-pointer list-none px-fluid-s py-fluid-xs flex items-center gap-2",
   {
     variants: {
       theme: {
@@ -50,17 +53,36 @@ const accordionSummaryStyles = cva(
   },
 );
 
-const accordionIconWrapperStyles = cva("relative shrink-0", {
-  variants: {
-    theme: {
-      "gradient-theme": "w-5 h-5",
-      "neon-theme": "w-6 h-6",
+const accordionDetailsStyles = cva(
+  "pb-fluid-s opacity-0 group-open:opacity-100 starting:group-open:opacity-0 transition-opacity duration-300 text-fluid-xs",
+  {
+    variants: {
+      theme: {
+        "gradient-theme":
+          "px-[calc(var(--spacing-fluid-s)+var(--icon-size)+8px)]",
+        "neon-theme": "px-[calc(var(--spacing-fluid-s)+var(--icon-size)+8px)]",
+      },
+    },
+    defaultVariants: {
+      theme: "gradient-theme",
     },
   },
-  defaultVariants: {
-    theme: "gradient-theme",
+);
+
+const accordionIconWrapperStyles = cva(
+  "relative shrink-0 size-[var(--icon-size)] flex items-center",
+  {
+    variants: {
+      theme: {
+        "gradient-theme": "",
+        "neon-theme": "",
+      },
+    },
+    defaultVariants: {
+      theme: "gradient-theme",
+    },
   },
-});
+);
 
 const accordionIconStyles = cva(
   "absolute inset-0 fill-current transition-opacity duration-200",
@@ -77,23 +99,8 @@ const accordionIconStyles = cva(
   },
 );
 
-const accordionDetailsStyles = cva(
-  "pl-[calc(30px + var(--spacing-fluid-s))] pr-fluid-s pb-fluid-s opacity-0 group-open:opacity-100 starting:group-open:opacity-0 transition-opacity duration-300",
-  {
-    variants: {
-      theme: {
-        "gradient-theme": ``,
-        "neon-theme": ``,
-      },
-    },
-    defaultVariants: {
-      theme: "gradient-theme",
-    },
-  },
-);
-
 const accordionImageStyles = cva(
-  "h-30 rounded-theme w-full relative overflow-hidden aspect-square",
+  "rounded-theme size-full relative overflow-hidden aspect-square",
   {
     variants: {
       theme: {
@@ -121,10 +128,6 @@ export const Accordion = ({
     theme: "gradient-theme" | "neon-theme";
   };
 
-  const AddIcon = theme === "gradient-theme" ? AddIconRound : AddIconFilled;
-  const RemoveIcon =
-    theme === "gradient-theme" ? RemoveIconRound : RemoveIconFilled;
-
   return (
     <div className={containerStyles}>
       <div className={accordionWrapperStyles}>
@@ -132,15 +135,22 @@ export const Accordion = ({
           <details
             key={index}
             {...(oneItemOpen && { name: "accordion-item" })}
+            {...(oneItemOpen && index === 0 && { open: true })}
             className={accordionEntryStyles({ theme })}
           >
             <summary className={accordionSummaryStyles({ theme })}>
               <span className={accordionIconWrapperStyles({ theme })}>
-                <AddIcon
+                <Icon
+                  filledIcon={AddIconFilled}
+                  roundIcon={AddIconRound}
                   className={`${accordionIconStyles({ theme })} opacity-100 group-open:opacity-0`}
+                  size={"100%"}
                 />
-                <RemoveIcon
+                <Icon
+                  filledIcon={RemoveIconFilled}
+                  roundIcon={RemoveIconRound}
                   className={`${accordionIconStyles({ theme })} opacity-0 group-open:opacity-100`}
+                  size={"100%"}
                 />
               </span>
               {summary}
@@ -159,13 +169,6 @@ export const Accordion = ({
               className={`${accordionImageItemStyles} group-has-[details:nth-child(${index + 1})[open]]:opacity-100 group-has-[details:nth-child(${index + 1})[open]]:scale-100`}
             />
           ))}
-          {withImages.fallbackImage && (
-            <img
-              src={withImages.fallbackImage}
-              alt={""}
-              className={accordionFallbackImageStyles}
-            />
-          )}
         </div>
       )}
     </div>

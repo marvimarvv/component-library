@@ -8,6 +8,15 @@
 @source inline("group-has-[details:nth-child({1,2,3,4,5,6})[open]]:{opacity-100,scale-100}");
 
 @layer base {
+  /* Define a custom property for icon size to ensure consistent spacing in the accordion component
+     This is needed because otherwise lh is not resolved at the level of the summary element, which is where the icon is
+     located, but only at the level of the details element, which is the parent of the summary element. */
+  @property --icon-size {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+  }
+
   :root {
     interpolate-size: allow-keywords;
 
@@ -101,6 +110,8 @@
     }
 
     --border-radius: 0rem;
+
+    letter-spacing: 0.06rem;
   }
 }
 

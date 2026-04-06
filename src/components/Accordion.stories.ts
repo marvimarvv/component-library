@@ -74,7 +74,6 @@ export const WithImages: Story = {
     ],
     withImages: {
       images: [image1.src, image2.src, image3.src],
-      fallbackImage: image4.src,
     },
   },
 };
