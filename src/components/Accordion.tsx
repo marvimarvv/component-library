@@ -5,14 +5,15 @@ import RemoveIconRound from "@material-design-icons/svg/round/remove.svg";
 import { cva } from "class-variance-authority";
 import { useTheme } from "./ThemeProvider";
 
-interface AccordionProps {
+type AccordionProps = {
   accordionEntries: { details: string; summary: string }[];
-  oneItemOpen?: boolean;
-  withImages?: {
-    images: string[];
-    fallbackImage?: string;
-  };
-}
+} & (
+  | { withImages?: never; oneItemOpen?: boolean }
+  | {
+      withImages: { images: string[]; fallbackImage?: string };
+      oneItemOpen: true;
+    }
+);
 
 const containerStyles =
   "gap-fluid-m grid grid-cols-1 max-w-md md:grid-cols-2 w-full group";

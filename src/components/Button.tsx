@@ -13,7 +13,7 @@ interface ButtonProps {
 }
 
 export const buttonStyles = cva(
-  "w-fit pointer-cursor rounded-full font-bold visited:no-underline focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:focus-visible:outline-primary-100 ",
+  "w-fit pointer-cursor font-bold visited:no-underline focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:focus-visible:outline-primary-100 ",
   {
     variants: {
       intent: {
@@ -30,7 +30,7 @@ export const buttonStyles = cva(
       },
       theme: {
         "gradient-theme":
-          "bg-linear-to-br from-primary-300 via-primary-700 to-primary-300 font-normal dark:from-primary-100 dark:via-primary-300 dark:to-primary-100 dark:text-primary-700 bg-size-[130%_150%] bg-position-[10%_top] hover:bg-position-[10%_bottom] active:shadow-[0px_3px_12px_6px_hsl(var(--color-primary-300))] dark:active:shadow-[0px_3px_12px_6px_hsl(var(--color-primary-100))] transition-[background-position,box-shadow] duration-200 ease-out before:bg-size-[130%_150%] before:bg-position-[10%_top] hover:before:bg-position-[10%_bottom] focus-visible:outline-primary-500 dark:focus-visible:outline-primary-100",
+          "bg-linear-to-br from-primary-300 via-primary-700 to-primary-300 font-normal dark:from-primary-100 dark:via-primary-300 dark:to-primary-100 dark:text-primary-700 bg-size-[130%_150%] bg-position-[10%_top] hover:bg-position-[10%_bottom] active:shadow-[0px_3px_12px_6px_hsl(var(--color-primary-300))] dark:active:shadow-[0px_3px_12px_6px_hsl(var(--color-primary-100))] transition-[background-position,box-shadow] duration-200 ease-out before:bg-size-[130%_150%] before:bg-position-[10%_top] hover:before:bg-position-[10%_bottom] focus-visible:outline-primary-500 dark:focus-visible:outline-primary-100 rounded-full",
         "neon-theme":
           "isolate -translate-y-[.5em] active:after:w-[.1em] active:after:-right-[.1em] active:after:-bottom-[.1em] active:before:h-[.1em] active:before:-right-[.1em] active:before:-bottom-[.1em] active:translate-y-0 active:translate-x-[.3em] after:transition-all transition-all before:transition-all after:duration-150 bg-primary-500 relative duration-150 after:absolute after:h-full after:w-[0.5em] after:right-[-0.5em] after:bottom-[-0.25em] after:bg-primary-700 after:skew-y-45 before:absolute before:-right-[0.25em] before:-bottom-[0.5em] before:w-full before:h-[0.5em] before:skew-x-45 before:bg-primary-900 dark:before:bg-primary-700 before:duration-150 after:-z-1 before:-z-1 dark:focus-visible:outline-white focus-visible:outline-black",
       },

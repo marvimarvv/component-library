@@ -39,20 +39,10 @@ const config: Config = {
         "primary-100-contrast": withOpacity("--color-primary-100-contrast")({
           opacityValue: 1,
         }),
-        "primary-100-contrast-muted": withOpacity(
-          "--color-primary-100-contrast-muted",
-        )({
-          opacityValue: 1,
-        }),
         "primary-300": withOpacity("--color-primary-300")({
           opacityValue: 1,
         }),
         "primary-300-contrast": withOpacity("--color-primary-300-contrast")({
-          opacityValue: 1,
-        }),
-        "primary-300-contrast-muted": withOpacity(
-          "--color-primary-300-contrast-muted",
-        )({
           opacityValue: 1,
         }),
         "primary-500": withOpacity("--color-primary-500")({
@@ -61,31 +51,16 @@ const config: Config = {
         "primary-500-contrast": withOpacity("--color-primary-500-contrast")({
           opacityValue: 1,
         }),
-        "primary-500-contrast-muted": withOpacity(
-          "--color-primary-500-contrast-muted",
-        )({
-          opacityValue: 1,
-        }),
         "primary-700": withOpacity("--color-primary-700")({
           opacityValue: 1,
         }),
         "primary-700-contrast": withOpacity("--color-primary-700-contrast")({
           opacityValue: 1,
         }),
-        "primary-700-contrast-muted": withOpacity(
-          "--color-primary-700-contrast-muted",
-        )({
-          opacityValue: 1,
-        }),
         "primary-900": withOpacity("--color-primary-900")({
           opacityValue: 1,
         }),
         "primary-900-contrast": withOpacity("--color-primary-900-contrast")({
-          opacityValue: 1,
-        }),
-        "primary-900-contrast-muted": withOpacity(
-          "--color-primary-900-contrast-muted",
-        )({
           opacityValue: 1,
         }),
         background: withOpacity("--color-background")({
