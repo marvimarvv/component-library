@@ -7,4 +7,25 @@
   .sidebar-item a[href*="theming--docs"] div:first-child {
     display: none;
   }
+
+  /* Size the brand logo and restore the title text */
+  .sidebar-header {
+    a[title="Marvimarvv's Component Library"] {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    img[alt="Marvimarvv's Component Library"] {
+      height: 24px;
+      width: auto;
+    }
+
+    a:has(img[alt="Marvimarvv's Component Library"])::after {
+      content: "Marvimarvv's Component Library";
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+  }
 </style>

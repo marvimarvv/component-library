@@ -1,0 +1,42 @@
+
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512">
+  <style>
+    #outline, #type {
+      fill: #320601;
+    }
+
+    #background {
+      fill: #fadad8;
+    }
+
+
+    <!-- Disable other styles for now, Storybook only has one mode
+    @media(prefers-color-scheme: dark) {
+      #outline, #type {
+        fill: #c5a4a0;
+      }
+
+      #background {
+        fill: #030c0d;
+      }
+    }
+
+    @media(prefers-contrast: more) {
+      #outline, #type {
+        fill: #030c0d;
+      }
+
+      #background {
+        fill: #ffffff;
+      }
+
+      #outline {
+        stroke-width: 16px;
+      } 
+    }
+    -->
+  </style>
+  <rect id="background" x="6.5" y="6.5" width="500" height="500"/>
+  <rect id="outline" x="6" y="6" width="500" height="500" style="fill:none; stroke:#320601; stroke-miterlimit:10; stroke-width:12px;"/>
+  <path id="type" d="m83.38,436.12V76.88h.48l182.51,259.56-19.74-4.33,182.51-255.22h.48v359.24h-46.71v-253.3l3.37,23.6-130.98,185.88h-.96L120.95,206.42l7.7-21.67v251.37h-45.27Z"/>
+</svg>

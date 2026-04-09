@@ -8,6 +8,7 @@ addons.setConfig({
   theme: create({
     base: "light",
     brandTitle: "Marvimarvv's Component Library",
+    brandImage: "/favicon.svg",
     brandUrl: "/",
     brandTarget: "_self",
   }),

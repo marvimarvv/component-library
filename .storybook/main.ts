@@ -11,6 +11,8 @@ const config: StorybookConfig = {
     "@storybook/addon-a11y",
   ],
 
+  staticDirs: [{ from: "../src/storybook/assets", to: "/" }],
+
   framework: {
     name: "@storybook/nextjs",
     options: {
