@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import MobileNav from "./MobileNav";
 
@@ -10,6 +11,14 @@ const meta = {
     // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
     layout: "fullscreen",
   },
+  decorators: [
+    (Story) =>
+      React.createElement(
+        "div",
+        { style: { height: "2000px" } },
+        React.createElement(Story),
+      ),
+  ],
 } satisfies Meta<typeof MobileNav>;
 
 export default meta;

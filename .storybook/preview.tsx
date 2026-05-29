@@ -64,7 +64,7 @@ const withThemeContext: Decorator = (Story, context: StoryContext) => {
 
   return (
     <ThemeProvider>
-      <div className={`${themeClass} ${fontClass}`} style={{ padding: "3rem" }}>
+      <div className={`${themeClass} ${fontClass}`}>
         <Story />
       </div>
     </ThemeProvider>

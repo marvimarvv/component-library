@@ -14,7 +14,12 @@ interface MobileNavProps {
 }
 
 const openButtonStyles =
-  "relative z-20 flex h-10 w-10 items-center justify-center rounded-theme focus:outline-hidden focus-visible:outline-solid";
+  "fixed top-6 left-6 z-20 flex size-10 items-center justify-center rounded-theme focus:outline-hidden focus-visible:outline-solid";
+
+const hamburgerIconStyles = "relative";
+
+const hamburgerBarStyles =
+  "mb-1.5 h-1 w-8 rounded-theme bg-background-contrast";
 
 const dialogStyles = cva(
   "fixed inset-0 z-10 m-0 h-screen w-screen border-0 bg-transparent p-0 text-primary-500-contrast dark:text-primary-700-contrast",
@@ -30,7 +35,18 @@ const dialogStyles = cva(
 
 const overlayStyles = "fixed inset-0 bg-primary-500 dark:bg-primary-700";
 
-const closeBarsStyles = "absolute h-1 w-8 origin-center rounded-theme";
+const closeButtonStyles =
+  "fixed left-6 top-6 z-20 size-10 aspect-square text-fluid-xl";
+
+const closeBarTopStyles =
+  "absolute h-1 w-8 origin-center rounded-theme top-1/2 -translate-y-1/2 bg-primary-500-contrast rotate-45";
+
+const closeBarBottomStyles =
+  "absolute h-1 w-8 origin-center rounded-theme top-1/2 -translate-y-1/2 bg-primary-500-contrast -rotate-45";
+
+const navStyles = "fixed inset-0 grid place-items-center";
+
+const navLinksStyles = "flex flex-col items-center justify-center gap-4";
 
 const linkStyles = cva("grow text-center text-fluid-xl", {
   variants: {
@@ -70,10 +86,10 @@ const MobileNav: React.FC<MobileNavProps> = ({ links }) => {
         aria-haspopup="dialog"
         aria-label="Open navigation"
       >
-        <div className="relative">
-          <div className="mb-1.5 h-1 w-8 rounded-theme bg-background-contrast" />
-          <div className="mb-1.5 h-1 w-8 rounded-theme bg-background-contrast" />
-          <div className="h-1 w-8 rounded-theme bg-background-contrast" />
+        <div className={hamburgerIconStyles}>
+          <div className={hamburgerBarStyles} />
+          <div className={hamburgerBarStyles} />
+          <div className={hamburgerBarStyles} />
         </div>
       </button>
 
@@ -86,23 +102,16 @@ const MobileNav: React.FC<MobileNavProps> = ({ links }) => {
       >
         <div aria-hidden="true" className={overlayStyles} />
         <button
-          className="absolute right-6 top-6 z-20 aspect-square text-fluid-xl focus:outline-hidden focus-visible:outline-solid"
+          className={closeButtonStyles}
           onClick={close}
           aria-label="Close navigation"
         >
-          <div className="relative">
-            <div
-              className={`${closeBarsStyles} top-0 -translate-y-1/2 rotate-45`}
-            />
-            <div className="h-1 w-8" />
-            <div
-              className={`${closeBarsStyles} bottom-0 -translate-y-1/2 -rotate-45`}
-            />
-          </div>
+          <div className={closeBarTopStyles} />
+          <div className={closeBarBottomStyles} />
         </button>
 
-        <nav className="fixed inset-0 grid place-items-center">
-          <div className="flex flex-col items-center justify-center gap-4">
+        <nav className={navStyles}>
+          <div className={navLinksStyles}>
             {links.map((link, index) => (
               <Link
                 key={index}

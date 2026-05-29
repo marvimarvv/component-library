@@ -7,6 +7,26 @@
 @source inline("text-primary-{100,300,500,700,900}-contrast");
 @source inline("group-has-[details:nth-child({1,2,3,4,5,6})[open]]:{opacity-100,scale-100}");
 
+.tooltip-popover {
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 150ms ease-out,
+    transform 150ms ease-out,
+    display 150ms allow-discrete,
+    overlay 150ms allow-discrete;
+}
+.tooltip-popover:popover-open {
+  opacity: 1;
+  transform: scale(1);
+}
+@starting-style {
+  .tooltip-popover:popover-open {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
 @layer base {
   /* Define a custom property for icon size to ensure consistent spacing in the accordion component
      This is needed because otherwise lh is not resolved at the level of the summary element, which is where the icon is
@@ -60,6 +80,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-wrap: break-word;
+  }
+
+  button {
+    cursor: pointer;
   }
 
   summary::-webkit-details-marker {
