@@ -1,5 +1,13 @@
+import { useEffect, useRef } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import React from "react";
+import {
+  Controls,
+  Description,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 
 import { Tooltip } from "./Tooltip";
 
@@ -8,6 +16,24 @@ const meta = {
   component: Tooltip,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Built on the native [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) and [CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning) (most features of it are Baseline 2026, the remaining one will become so as well because they are part of Interop 2026)",
+      },
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <BaselineStatusWidget featureId="anchor-positioning" />
+          <BaselineStatusWidget featureId="popover" />
+          <Primary />
+          <Controls />
+          <Stories />
+        </>
+      ),
+    },
   },
   tags: ["autodocs"],
   argTypes: {
@@ -23,6 +49,38 @@ const Trigger = ({ text }: { text: string }) => (
     {text}
   </span>
 );
+
+const BaselineStatusWidget = ({ featureId }: { featureId: string }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!document.querySelector('script[src*="baseline-status"]')) {
+      const script = document.createElement("script");
+      script.src =
+        "https://cdn.jsdelivr.net/npm/baseline-status@1/baseline-status.min.js";
+      script.type = "module";
+      document.head.appendChild(script);
+    }
+
+    if (containerRef.current && !containerRef.current.firstChild) {
+      const el = document.createElement("baseline-status");
+      el.setAttribute("featureId", featureId);
+      containerRef.current.appendChild(el);
+    }
+  }, [featureId]);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        background: "#f8f9fa",
+        borderRadius: "8px",
+        padding: "12px 16px",
+        marginBottom: "12px",
+      }}
+    />
+  );
+};
 
 /** Default tooltip — hover or focus the underlined text. */
 export const Top: Story = {

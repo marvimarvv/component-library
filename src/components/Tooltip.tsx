@@ -34,7 +34,7 @@ export const tooltipStyles = cva(
 
 interface TooltipProps {
   /** Element the tooltip anchors to and is triggered by (hover or focus) */
-  children: ReactNode;
+  children?: ReactNode;
   /** Text content shown inside the tooltip */
   label: string;
   /** Side of the trigger the tooltip prefers (uses CSS anchor positioning `position-area`) */
@@ -55,6 +55,27 @@ export const Tooltip = ({ children, label, side = "top" }: TooltipProps) => {
 
   return (
     <>
+      <style>{`
+        .tooltip-popover {
+          opacity: 0;
+          transform: scale(0.95);
+          transition:
+            opacity 150ms ease-out,
+            transform 150ms ease-out,
+            display 150ms allow-discrete,
+            overlay 150ms allow-discrete;
+        }
+        .tooltip-popover:popover-open {
+          opacity: 1;
+          transform: scale(1);
+        }
+        @starting-style {
+          .tooltip-popover:popover-open {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+        }
+      `}</style>
       <span
         className={tooltipTriggerStyles({ theme })}
         tabIndex={0}
