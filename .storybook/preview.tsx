@@ -44,6 +44,7 @@ const withThemeContext: Decorator = (Story, context: StoryContext) => {
     backgroundColor = "hsl(0,0%,0%)";
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks -- Storybook decorator, not a component/hook; the TS `Decorator` annotation confuses the naming heuristic.
   useEffect(() => {
     document.body.style.backgroundColor = backgroundColor;
     // Set the background color for all .docs-story elements
@@ -53,6 +54,7 @@ const withThemeContext: Decorator = (Story, context: StoryContext) => {
   }, [backgroundColor]);
 
   // Fire a themeChange event whenever the theme changes to update the theme global context
+  // eslint-disable-next-line react-hooks/rules-of-hooks -- Storybook decorator, not a component/hook; the TS `Decorator` annotation confuses the naming heuristic.
   useEffect(() => {
     const event = new CustomEvent("themeChange", { detail: theme });
     window.dispatchEvent(event);

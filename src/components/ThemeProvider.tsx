@@ -11,6 +11,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     // Load theme from local storage or set default
     const savedTheme = localStorage.getItem("theme") || "gradient-theme";
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads from localStorage/matchMedia (external systems) on mount, so it must run in an effect.
     setTheme(savedTheme);
 
     // Check for saved mode or system preference
